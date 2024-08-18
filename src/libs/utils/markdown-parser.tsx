@@ -26,6 +26,7 @@ export function renderMessageContent(content: any) {
     <Markdown
     // eslint-disable-next-line react/no-children-prop
      className=''
+    // eslint-disable-next-line react/no-children-prop
     children={content}
     components={{
       code(props) {

@@ -8,7 +8,7 @@ import Header from '@/components/ui/Header';
 import { HeaderComponent } from '@/components/component/header-component';
 
 
-function page() {
+function Page() {
 
   useEffect(() => {
     if (typeof window.createLemonSqueezy === "function") {
@@ -39,4 +39,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

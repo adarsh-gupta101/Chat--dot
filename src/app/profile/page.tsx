@@ -12,7 +12,7 @@ import {
   } from "@/components/ui/card"
 import Pricing from "@/components/ui/pricing";
 
-function page() {
+function Page() {
   const [credits, setCredits] = React.useState(0);
   useEffect(() => {
     let creditsFetch = fetch("/api/user/", {
@@ -47,7 +47,7 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
 
  function CreditComponent({credits}) {
   return (
