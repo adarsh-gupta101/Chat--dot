@@ -58,7 +58,7 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error(
-      `Failed to send message1111111111111111111111111111111111111 ${error.error as string}`
+      // `Failed to send message1111111111111111111111111111111111111 ${error.error as string}`
     );
     // return NextResponse.json({ error: `Failed to send message ${error.error.error}`}, { status: 500 });
   }
