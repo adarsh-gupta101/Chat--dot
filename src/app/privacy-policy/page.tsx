@@ -45,7 +45,7 @@ function PrivacyPolicy() {
                 <li>
                   <strong>Affiliate</strong> means an entity that controls, is
                   controlled by or is under common control with a party, where
-                  &quot;control" means ownership of 50% or more of the shares, equity
+                  &quot;control&quot; means ownership of 50% or more of the shares, equity
                   interest or other securities entitled to vote for election of
                   directors or other managing authority.
                 </li>
