@@ -10,6 +10,7 @@ import { Button } from "../ui/button";
 import { CardSpotlight } from "../ui/card-spotlight";
 import Pricing from "../ui/pricing";
 import { WobbleCard } from "../ui/wobble-card";
+import FooterComponent from "../ui/footer";
 
 export default function HomeScreen() {
   return (
@@ -76,6 +77,8 @@ export default function HomeScreen() {
       </div>
 
       <Pricing />
+
+      <FooterComponent/>
     </div>
   );
 }

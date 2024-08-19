@@ -48,10 +48,10 @@ export async function POST(
     - Use JavaScript as the language for the React component
     - Use Tailwind classes for styling. DO NOT USE ARBITRARY VALUES (e.g. \`h-[600px]\`). Make sure to use a consistent color palette.
     - Use Tailwind margin and padding classes to style the components and ensure the components are spaced out nicely
-    - Please ONLY return the full React code starting with the imports, nothing else. It's very important for my job that you only return the React code with imports. DO NOT START WITH \`\`\`typescript or \`\`\`javascript or \`\`\`tsx or \`\`\`.
+    - Please ONLY return the full React code starting with the imports, nothing else. It's very important for my job that you only return the React code with imports. DO NOT START WITH \`\`\`typescript or \`\`\`javascript or \`\`\`tsx or \`\`\` or \`\`\`jsx or any other similar ones, just give the code only.
      - The lucide-react@0.263.1 library is also available to be imported. If you need an icon, use one from lucide-react. Here's an example of importing and using one: import { Camera } from "lucide-react"\` & \`<Camera color="red" size={48} />\`
     - ONLY IF the user asks for a dashboard, graph or chart, the recharts library is available to be imported, e.g. \`import { LineChart, XAxis, ... } from "recharts"\` & \`<LineChart ...><XAxis dataKey="name"> ...\`. Please only use this when needed.
- 
+    - Just give the code, starting from the import statements. Do not include any other text in the response. Do not add line breaks or spaces at the beginning of the response. Do not include any comments in the response. Do not add any labels of the language in the response.
 
   `;
 
@@ -108,6 +108,7 @@ export async function POST(
             finishReason,
           }) {
             // implement your own storage logic:
+            deductCredit(user.id, usage.totalTokens);
             console.log({ text, toolCalls, toolResults, usage, finishReason });
           },
         });
@@ -141,6 +142,7 @@ export async function POST(
             finishReason,
           }) {
             // implement your own storage logic:
+            deductCredit(user.id, usage.totalTokens);
             console.log({ text, toolCalls, toolResults, usage, finishReason });
           },
         });
