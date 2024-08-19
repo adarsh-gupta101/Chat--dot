@@ -13,14 +13,14 @@ export default function Home() {
   const user= useUser();
   console.log(user);
   useEffect(() => {
-    if (typeof window.createLemonSqueezy === "function") {
-      window.createLemonSqueezy();
+    if (typeof (window as any).createLemonSqueezy === "function") {
+      (window as any).createLemonSqueezy?.();
     }
   }, []);
   async function getCheckoutURL_So_that_Users_Can_Buy() {
     let checkoutUrl = await getCheckoutURL(472559, true);
     // window.open(checkoutUrl);
-    window.LemonSqueezy.Url.Open(checkoutUrl);
+    (window as any).LemonSqueezy.Url.Open(checkoutUrl);
   }
 
   return (
@@ -29,9 +29,9 @@ export default function Home() {
         src="https://assets.lemonsqueezy.com/lemon.js"
         defer
         strategy="lazyOnload"
-        onLoad={() => {
-          window.createLemonSqueezy();
-        }}
+        // onLoad={() => {
+        //   window!.createLemonSqueezy();
+        // }}
       ></Script>
      <HomeScreen/>
     </main>

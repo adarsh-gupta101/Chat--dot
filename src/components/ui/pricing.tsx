@@ -31,8 +31,8 @@ import Script from "next/script";
 
 function Pricing() {
   useEffect(() => {
-    if (typeof window.createLemonSqueezy === "function") {
-      window.createLemonSqueezy();
+    if (typeof (window as any).createLemonSqueezy === "function") {
+      (window as any).createLemonSqueezy?.();
     }
   }, []);
   async function getCheckoutURL_So_that_Users_Can_Buy() {
@@ -47,8 +47,9 @@ function Pricing() {
         src="https://assets.lemonsqueezy.com/lemon.js"
         defer
         strategy="lazyOnload"
+
         onLoad={() => {
-          window.createLemonSqueezy();
+          (window as any).createLemonSqueezy();
         }}
       ></Script>
 

@@ -49,7 +49,7 @@ function Page() {
 
 export default Page;
 
- function CreditComponent({credits}) {
+ function CreditComponent({credits}:{credits:number}) {
   return (
     <Card>
       <CardHeader className="pb-2">

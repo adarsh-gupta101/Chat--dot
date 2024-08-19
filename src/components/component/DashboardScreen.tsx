@@ -42,7 +42,7 @@ function DashboardScreen() {
       });
     }
   };
-  const handleSyncMessageChange = (event) => {
+  const handleSyncMessageChange = ({event}:{event: any}) => {
     console.log("event.target.value", event.target.value);
     setSyncMessage(event.target.value);
   };
@@ -135,6 +135,8 @@ function DashboardScreen() {
     );
   };
 
+
+
   return (
     <div className="bg-gray-200 w-full h-screen  p-2 pb-6">
       <Toaster />
@@ -177,7 +179,7 @@ function DashboardScreen() {
             <Input
               type="text"
               value={syncMessage}
-              onChange={handleSyncMessageChange}
+              onChange={(e)=>handleSyncMessageChange(e)}
               className="border border-gray-300 rounded-md p-2 "
               onKeyDown={(e) => {
                 if (e.key === "Enter") {

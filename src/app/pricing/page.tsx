@@ -9,16 +9,15 @@ import { HeaderComponent } from '@/components/component/header-component';
 
 
 function Page() {
-
   useEffect(() => {
-    if (typeof window.createLemonSqueezy === "function") {
-      window.createLemonSqueezy();
+    if (typeof (window as any).createLemonSqueezy === "function") {
+      (window as any).createLemonSqueezy?.();
     }
   }, []);
   async function getCheckoutURL_So_that_Users_Can_Buy() {
     let checkoutUrl = await getCheckoutURL(485166, true);
     // window.open(checkoutUrl);
-    window.LemonSqueezy.Url.Open(checkoutUrl);
+    // window.LemonSqueezy.Url.Open(checkoutUrl);
   }
 
   return (
@@ -28,9 +27,9 @@ function Page() {
         src="https://assets.lemonsqueezy.com/lemon.js"
         defer
         strategy="lazyOnload"
-        onLoad={() => {
-          window.createLemonSqueezy();
-        }}
+        // onLoad={() => {
+        //   window.createLemonSqueezy();
+        // }}
       ></Script>
         
       <Pricing/>
