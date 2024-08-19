@@ -10,7 +10,7 @@ interface EmailTemplateProps {
       <h1>Welcome, {firstName}!</h1>
   
       <p>
-        Thanks for signing up for building cool things using ShipYourSaas. We&apos;re
+        Thanks for signing up for building cool things using Chat-dot. We&apos;re
         excited to have you on board.
       </p>
   

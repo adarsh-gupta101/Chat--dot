@@ -10,7 +10,7 @@ export default function BillingPage() {
    
       <div>
         <Suspense >
-          <Subscriptions />
+          {/* <Subscriptions /> */}
         </Suspense>
 
         <Suspense>

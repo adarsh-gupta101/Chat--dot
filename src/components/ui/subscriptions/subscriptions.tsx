@@ -88,10 +88,12 @@ console.log(userSubscriptions,"user subs")
 
                 <div className="flex items-center gap-2">
                   {isValidSubscription(status) && (
+                    <>
                     <ChangePlan planId={subscription.plan_id} />
+                  <SubscriptionActions subscription={subscription} />
+                    </>
                   )}
 
-                  <SubscriptionActions subscription={subscription} />
                 </div>
               </header>
 

@@ -68,9 +68,9 @@ export async function POST(req: Request) {
           credits:0
         })
         let username = first_name + " " + last_name;
-        if (evt.type !== "user.updated") {
-          sendSignUpEmail(email, username);
-        }
+        // if (evt.type !== "user.updated") {
+        //   sendSignUpEmail(email, username);
+        // }
         return NextResponse.json(
           { message: "User updated in Supabase" },
           { status: 200 }

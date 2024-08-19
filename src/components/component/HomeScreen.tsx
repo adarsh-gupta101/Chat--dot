@@ -128,11 +128,11 @@ function WobbleCardDemo() {
           </p>
         </div>
         <Image
-          src="/linear.webp"
-          width={500}
-          height={500}
+          src="/sc1.png"
+          width={600}
+          height={600}
           alt="linear demo image"
-          className="absolute -right-4 lg:-right-[40%] grayscale filter -bottom-10 object-contain rounded-2xl"
+          className="absolute -right-4 lg:-right-[10%] grayscale filter -bottom-5 object-contain rounded-2xl"
         />
       </WobbleCard>
       <WobbleCard containerClassName="col-span-1 min-h-[300px]">
@@ -142,6 +142,13 @@ function WobbleCardDemo() {
         <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
          Chat with each model individually with an Intutive UI.
         </p>
+        <Image
+          src="/sc1.png"
+          width={500}
+          height={500}
+          alt="linear demo image"
+          className="absolute -right-4 lg:-right-[40%] grayscale filter -bottom-10 object-contain rounded"
+        />
       </WobbleCard>
       <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-blue-900 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]">
         <div className="max-w-sm">
@@ -153,11 +160,11 @@ function WobbleCardDemo() {
           </p>
         </div>
         <Image
-          src="/linear.webp"
-          width={500}
-          height={500}
+          src="/sc2.png"
+          width={600}
+          height={600}
           alt="linear demo image"
-          className="absolute -right-10 md:-right-[40%] lg:-right-[20%] -bottom-10 object-contain rounded-2xl"
+          className="absolute -right-10 md:-right-[10%] lg:-right-[10%] -bottom-10 object-contain rounded-2xl"
         />
       </WobbleCard>
     </div>

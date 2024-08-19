@@ -3,6 +3,7 @@ import { getUserSubscription, syncPlans } from "@/libs/lemonsqueezy";
 // import { db, plans, type NewPlan } from "@/db/schema";
 import { InfoMessage, NoPlans, Plan } from "./plan";
 import { allPlans } from "@/libs/Supabase";
+import { notFound } from "next/navigation";
 
 export async function Plans({
   isChangingPlans = false,
@@ -13,10 +14,10 @@ export async function Plans({
 //   let allPlans: any[] = await db.select().from(plans);
     let {data} = await allPlans();
     let allPlan: any[] | null = data || [];
-    console.log(allPlan,"all plan 34",allPlan)
   const userSubscriptions = await getUserSubscription();
+  console.log(userSubscriptions,"user subs")
 
-  if(!userSubscriptions) return;
+  if(!userSubscriptions) return <p>no subscription</p>;
   // Do not show plans if the user already has a valid subscription.
   if (userSubscriptions?.length > 0) {
     const hasValidSubscription = userSubscriptions.some((subscription) => {
@@ -29,14 +30,10 @@ export async function Plans({
     });
 
     if (hasValidSubscription && !isChangingPlans) {
-      return null;
+      notFound()
     }
   }
 
-  // console.log(allPlan,"all plan 34",allPlan)
-
-  // If there are no plans in the database, sync them from Lemon Squeezy.
-  // You might want to add logic to sync plans periodically or a webhook handler.
 
   if (!allPlan?.length) {
     return <NoPlans />;
@@ -58,7 +55,7 @@ export async function Plans({
   return (
     <div>
       <h2 className='flex items-center after:ml-5 after:h-px after:grow after:bg-surface-100 after:content-[""]'>
-        Plans
+        Plans {sortedPlans.length}
       </h2>
 
       <div className="mb-5 mt-3 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-5">
