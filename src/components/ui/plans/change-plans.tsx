@@ -18,12 +18,12 @@ const allPlan: any = (await allPlans()).data;
   const isCurrentPlanUsageBased = currentPlan?.isUsageBased;
  
   const filteredPlans = allPlan
-    .filter((plan) => {
+    .filter((plan: any) => {
       return isCurrentPlanUsageBased
         ? Boolean(plan.isUsageBased)
         : Boolean(!plan.isUsageBased);
     })
-    .sort((a, b) => {
+    .sort((a: { sort: number | null | undefined; }, b: { sort: number | null | undefined; }) => {
       if (
         a.sort === undefined ||
         a.sort === null ||
@@ -43,7 +43,7 @@ const allPlan: any = (await allPlans()).data;
   return (
     <div className="flex flex-col gap-5">
       <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-5">
-        {filteredPlans.map((plan, index) => {
+        {filteredPlans.map((plan: any, index:any) => {
           return (
             <Plan
               isChangingPlans={true}

@@ -12,7 +12,7 @@ export async function Plans({
 }) {
 //   let allPlans: any[] = await db.select().from(plans);
     let {data} = await allPlans();
-    let allPlan=data
+    let allPlan: any[] | null = data || [];
     console.log(allPlan,"all plan 34",allPlan)
   const userSubscriptions = await getUserSubscription();
 
@@ -37,11 +37,8 @@ export async function Plans({
 
   // If there are no plans in the database, sync them from Lemon Squeezy.
   // You might want to add logic to sync plans periodically or a webhook handler.
-  if (!allPlan.length) {
-    allPlan = await syncPlans();
-  }
 
-  if (!allPlan.length) {
+  if (!allPlan?.length) {
     return <NoPlans />;
   }
 

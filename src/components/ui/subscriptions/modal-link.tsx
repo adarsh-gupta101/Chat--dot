@@ -19,14 +19,19 @@ export function LemonSqueezyModalLink({
         src="https://assets.lemonsqueezy.com/lemon.js"
         defer
         strategy="lazyOnload"
-        onLoad={() => {
-          window.createLemonSqueezy();
-        }}
+        // onLoad={() => {
+        //   window.createLemonSqueezy();
+        // }}
       ></Script>
     <DropdownMenu.Item
       onClick={() => {
         if (href) {
-          window.LemonSqueezy.Url.Open(href);
+
+          // window.LemonSqueezy.Url.Open(href);
+
+          let checkoutUrl = href;
+          (window as any).LemonSqueezy.Url.Open(checkoutUrl);
+
         } else {
           throw new Error(
             "href provided for the Lemon Squeezy modal is not valid.",

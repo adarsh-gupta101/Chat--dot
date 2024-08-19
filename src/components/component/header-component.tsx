@@ -13,7 +13,7 @@ export function HeaderComponent() {
     <header className="flex items-center justify-between h-16 px-4 bg-background border-b md:px-6">
       <div className="flex items-center gap-4">
         <Link href="/" className="flex items-center gap-2" prefetch={false}>
-          <Image src={logo} width={60} height={60} className="w-10 h-10"/>
+          <Image alt="logo" src={logo} width={60} height={60} className="w-10 h-10"/>
           <span className="font-bold text-lg">chat-dot.com</span>
         </Link>
       </div>
@@ -84,7 +84,7 @@ export function HeaderComponent() {
   )
 }
 
-function DollarSignIcon(props) {
+function DollarSignIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -105,7 +105,7 @@ function DollarSignIcon(props) {
 }
 
 
-function LayoutGridIcon(props) {
+function LayoutGridIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -128,7 +128,7 @@ function LayoutGridIcon(props) {
 }
 
 
-function MenuIcon(props) {
+function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -150,7 +150,7 @@ function MenuIcon(props) {
 }
 
 
-function UserIcon(props) {
+function UserIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -171,24 +171,3 @@ function UserIcon(props) {
 }
 
 
-function WebcamIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="10" r="8" />
-      <circle cx="12" cy="10" r="3" />
-      <path d="M7 22h10" />
-      <path d="M12 22v-4" />
-    </svg>
-  )
-}

@@ -37,8 +37,8 @@ function Pricing() {
   }, []);
   async function getCheckoutURL_So_that_Users_Can_Buy() {
     let checkoutUrl = await getCheckoutURL(485166, true);
-    // window.open(checkoutUrl);
-    window.LemonSqueezy.Url.Open(checkoutUrl);
+    window.open(checkoutUrl);
+    // window.LemonSqueezy.Url.Open(checkoutUrl);
   }
 
   return (
@@ -88,8 +88,8 @@ function PricingTable({ product_id }: { product_id?: string }) {
 
   async function getCheckoutURL_So_that_Users_Can_Buy() {
     let checkoutUrl = await getCheckoutURL(485166, true);
-    // window.open(checkoutUrl);
-    window.LemonSqueezy.Url.Open(checkoutUrl);
+    window.open(checkoutUrl);
+    // window.LemonSqueezy.Url.Open(checkoutUrl);
   }
   return (
     <Card className=" md:w-1/4 px-6 bg-gray-50 ring-1 ring-gray-50 rounded m-6">

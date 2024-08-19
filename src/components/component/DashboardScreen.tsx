@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, ChangeEvent } from "react";
 import { ChatComponent } from "./chat-component";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "../ui/button";
@@ -42,7 +42,7 @@ function DashboardScreen() {
       });
     }
   };
-  const handleSyncMessageChange = ({event}:{event: any}) => {
+  const handleSyncMessageChange = (event: ChangeEvent<HTMLInputElement>) => {
     console.log("event.target.value", event.target.value);
     setSyncMessage(event.target.value);
   };

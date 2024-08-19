@@ -17,7 +17,7 @@ const allPlan = await allPlans();
 console.log(userSubscriptions,"user subs")
 // return;
 
-  if (userSubscriptions.length === 0) {
+  if (userSubscriptions?.length === 0) {
     return (
       <p className="not-prose mb-2">
         It appears that you do not have any subscriptions. Please sign up for a
@@ -27,7 +27,7 @@ console.log(userSubscriptions,"user subs")
   }
 
   // Show active subscriptions first, then paused, then canceled
-  const sortedSubscriptions = userSubscriptions.sort((a, b) => {
+  const sortedSubscriptions = userSubscriptions?.sort((a, b) => {
     if (a.status === "active" && b.status !== "active") {
       return -1;
     }
@@ -41,7 +41,7 @@ console.log(userSubscriptions,"user subs")
 
   return (
     <Section className="not-prose relative">
-      {sortedSubscriptions.map(
+      {sortedSubscriptions?.map(
         (subscription: any, index: number) => {
             const plan = allPlan.data?.find((p) => p.id === subscription.plan_id);
            

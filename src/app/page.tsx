@@ -7,7 +7,6 @@ import Image from "next/image";
 import Script from "next/script";
 import { useEffect } from "react";
 import HomeScreen from "@/components/component/HomeScreen";
-import { MultiChat } from "@/components/component/multi-chat";
 
 export default function Home() {
   const user= useUser();

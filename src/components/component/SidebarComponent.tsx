@@ -97,11 +97,11 @@ export function SidebarComponent() {
               href: "#",
               icon: (
                 <Image
-                  src={user?.imageUrl}
+                  src={user?.imageUrl as string}
+                  alt="user logo"
                   className="h-7 w-7 flex-shrink-0 rounded-full"
                   width={50}
                   height={50}
-                  alt="Avatar"
                 />
               ),
             }}
