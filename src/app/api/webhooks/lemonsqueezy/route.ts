@@ -43,7 +43,7 @@ export async function POST(request: Request) {
 
   // First, make sure the request is from Lemon Squeezy.
   const rawBody = await request.text();
-  const secret = process.env.LEMONSQUEEZY_WEBHOOK_SECRET;
+  const secret = process.env.LEMONSQUEEZY_WEBHOOK_SECRET as string;
 
   const hmac = crypto.createHmac("sha256", secret);
   const digest = Buffer.from(hmac.update(rawBody).digest("hex"), "utf8");

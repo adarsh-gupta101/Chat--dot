@@ -46,7 +46,8 @@ async function page() {
         {sortedSubscriptions?.map(async (subscription, index) => {
           //   const plan =  allPlans().eq("id", subscription.plan);
           const allPlansData = await allPlans();
-          const plan = allPlansData?.data.find(
+          
+          const plan = allPlansData?.data?.find(
             (plan: { id: number }) => plan.id === subscription.plan_id
           );
           // return JSON.stringify(plan);
