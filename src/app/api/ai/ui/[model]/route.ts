@@ -7,7 +7,7 @@ import { deductCredit, getUserCredits } from "@/libs/user";
 import { currentUser } from "@clerk/nextjs/server";
 
 const VALID_MODELS = ["openai", "claude", "google"];
-const submodelMapper = {
+const submodelMapper: Record<string, string> = {
   "claude-3-haiku": "claude-3-haiku-20240307",
   "claude-3-opus": "claude-3-opus-20240229",
   "claude-3-sonnet": "claude-3-sonnet-20240229",
