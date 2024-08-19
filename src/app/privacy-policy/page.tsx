@@ -38,14 +38,14 @@ function PrivacyPolicy() {
                   applicable.
                 </li>
                 <li>
-                  <strong>Company</strong> (referred to as either "the Company",
-                  "We", "Us" or "Our" in this Agreement) refers to
+                  <strong>Company</strong> (referred to as either &quot;the Company&quot;,
+                  &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to
                   chat.adarsh-gupta.in.
                 </li>
                 <li>
                   <strong>Affiliate</strong> means an entity that controls, is
                   controlled by or is under common control with a party, where
-                  "control" means ownership of 50% or more of the shares, equity
+                  &quot;control" means ownership of 50% or more of the shares, equity
                   interest or other securities entitled to vote for election of
                   directors or other managing authority.
                 </li>
