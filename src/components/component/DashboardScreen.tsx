@@ -154,7 +154,7 @@ function DashboardScreen() {
           >
             <IconTableMinus />{" "}
           </Button>
-          <p className="mx-2 hidden md:block">Sync Chat</p>
+          <p className="mx-2 hidden md:block text-gray-400 ">Sync Chat</p>
           <CustomSwitch />
         </div>
       </div>
