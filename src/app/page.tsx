@@ -15,6 +15,8 @@ export default function Home() {
     if (typeof (window as any).createLemonSqueezy === "function") {
       (window as any).createLemonSqueezy?.();
     }
+
+    syncPlans()
   }, []);
   async function getCheckoutURL_So_that_Users_Can_Buy() {
     let checkoutUrl = await getCheckoutURL(472559, true);
