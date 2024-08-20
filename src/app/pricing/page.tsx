@@ -6,6 +6,7 @@ import { getCheckoutURL, storeWebhookEvent, syncPlans } from "@/libs/lemonsqueez
 import Pricing from '@/components/ui/pricing';
 import Header from '@/components/ui/Header';
 import { HeaderComponent } from '@/components/component/header-component';
+import FooterComponent from '@/components/ui/footer';
 
 
 function Page() {
@@ -33,6 +34,8 @@ function Page() {
       ></Script>
         
       <Pricing/>
+
+      <FooterComponent/>
 
     </div>
   )

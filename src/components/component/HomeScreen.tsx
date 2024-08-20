@@ -17,7 +17,7 @@ export default function HomeScreen() {
     <div className="flex flex-col justify-center  w-full">
       <HeaderComponent></HeaderComponent>
 
-      <div className="flex flex-col m-16 min-h-96  justify-center my-32">
+      <div className="flex flex-col m-2 md:m-16 min-h-96  justify-center my-32 text-balance">
         <HeroHighlight>
           <motion.h1
             initial={{
@@ -52,7 +52,7 @@ export default function HomeScreen() {
       </div>
 
       <div className="flex justify-center items-center">
-        <CardSpotlight className="h-2/4 w-2/3 md:w-1/3">
+        <CardSpotlight className="h-2/4 w-5/6 md:w-1/3">
           <p className="text-2xl font-bold relative z-20 mt-2 text-white">
             Way to AI debt
           </p>
@@ -71,7 +71,7 @@ export default function HomeScreen() {
         </CardSpotlight>
       </div>
 
-      <div className="flex-col items-center justify-center min-h-72 m-16">
+      <div className="flex-col items-center justify-center min-h-72 m-2 md:m-16">
         <p className="m-6 text-center">Instead just use this... ↓</p>
         <WobbleCardDemo />
       </div>
@@ -116,7 +116,7 @@ function WobbleCardDemo() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
       <WobbleCard
-        containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px]"
+        containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[400px]"
         className=""
       >
         <div className="max-w-xs">
@@ -142,13 +142,13 @@ function WobbleCardDemo() {
         <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
          Chat with each model individually with an Intutive UI.
         </p>
-        <Image
-          src="/sc1.png"
+        {/* <Image
+          src="/sc2.png"
           width={500}
           height={500}
           alt="linear demo image"
-          className="absolute -right-4 lg:-right-[40%] grayscale filter -bottom-10 object-contain rounded"
-        />
+          className="absolute -right-4 lg:-right-[40%] grayscale filter -bottom-20 object-contain rounded"
+        /> */}
       </WobbleCard>
       <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-blue-900 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]">
         <div className="max-w-sm">
@@ -160,7 +160,7 @@ function WobbleCardDemo() {
           </p>
         </div>
         <Image
-          src="/sc2.png"
+          src="/sc3.png"
           width={600}
           height={600}
           alt="linear demo image"

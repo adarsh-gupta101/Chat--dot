@@ -4,7 +4,7 @@ import React from "react";
 
 function FooterComponent() {
   return (
-    <footer className="flex justify-between items-center border-t-2 p-8">
+    <footer className="flex md:flex-row flex-col justify-between items-center border-t-2 p-8">
       <div className="">
         <Image src="/logo.png" alt="logo" width={50} height={50} />
         <p className="font-bold ">Chat-dot</p>
@@ -13,14 +13,15 @@ function FooterComponent() {
       <div >
         <ul className="flex">
           <Link href="/">
-            <li className="hover:text-gray-500 hover:underline m-1">Home</li>
+            <li className="hover:text-gray-500 hover:underline m-1 border-r-2 p-1">Home</li>
           </Link>
           <Link href="/privacy-policy">
             {" "}
-            <li className="hover:text-gray-500 hover:underline m-1">Privacy Policy</li>
+            <li className="hover:text-gray-500 hover:underline m-1 border-r-2 p-1">Privacy Policy</li>
           </Link>
           <Link href="/tos">
-            <li className="hover:text-gray-500 hover:underline m-1">Terms of Services</li>
+            <li className="hover:text-gray-500 hover:underline m-1  p-1
+ border-r-2">Terms of Services</li>
           </Link>
         </ul>
       </div>

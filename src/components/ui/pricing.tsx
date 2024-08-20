@@ -42,7 +42,7 @@ function Pricing() {
   }
 
   return (
-    <div className="">
+    <div className="mt-6">
       <Script
         src="https://assets.lemonsqueezy.com/lemon.js"
         defer
@@ -92,7 +92,7 @@ function PricingTable({ product_id }: { product_id?: string }) {
     // window.LemonSqueezy.Url.Open(checkoutUrl);
   }
   return (
-    <Card className=" md:w-1/4 px-6 bg-gray-50 ring-1 ring-gray-50 rounded m-6">
+    <Card className="  md:w-1/3 px-6 bg-gray-50 ring-1 ring-gray-50 rounded m-6">
       <CardHeader>
         <CardTitle>Premium</CardTitle>
         <CardDescription>

@@ -11,6 +11,7 @@ import {
     CardTitle,
   } from "@/components/ui/card"
 import Pricing from "@/components/ui/pricing";
+import FooterComponent from "@/components/ui/footer";
 
 function Page() {
   const [credits, setCredits] = React.useState(0);
@@ -41,7 +42,7 @@ function Page() {
 
 
 
-
+<FooterComponent/>
 
     </div>
   );

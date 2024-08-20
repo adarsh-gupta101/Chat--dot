@@ -1,4 +1,5 @@
 import { HeaderComponent } from '@/components/component/header-component'
+import FooterComponent from '@/components/ui/footer'
 import { SignIn } from '@clerk/nextjs'
 import React from 'react'
 
@@ -10,6 +11,9 @@ function LoginPage() {
 
         <SignIn/>
         </div>
+
+        <FooterComponent/>
+
       
     </div>
   )

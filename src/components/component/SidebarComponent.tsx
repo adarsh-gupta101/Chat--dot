@@ -94,7 +94,7 @@ export function SidebarComponent() {
           <SidebarLink
             link={{
               label: user?.fullName as string,
-              href: "#",
+              href: "/profile",
               icon: (
                 <Image
                   src={user?.imageUrl as string}
@@ -109,7 +109,7 @@ export function SidebarComponent() {
           <SidebarLink
             link={{
               label: `Credits: ${credits}`,
-              href: "#",
+              href: "/profile",
               icon:null
              
             }}
