@@ -87,7 +87,7 @@ function PricingTable({ product_id }: { product_id?: string }) {
   const formRef = React.useRef<HTMLFormElement>(null);
 
   async function getCheckoutURL_So_that_Users_Can_Buy() {
-    let checkoutUrl = await getCheckoutURL(485166, true);
+    let checkoutUrl = await getCheckoutURL(491419, true);
     window.open(checkoutUrl);
     // window.LemonSqueezy.Url.Open(checkoutUrl);
   }
