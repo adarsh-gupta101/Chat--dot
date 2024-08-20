@@ -35,11 +35,7 @@ function Pricing() {
       (window as any).createLemonSqueezy?.();
     }
   }, []);
-  async function getCheckoutURL_So_that_Users_Can_Buy() {
-    let checkoutUrl = await getCheckoutURL(485166, true);
-    window.open(checkoutUrl);
-    // window.LemonSqueezy.Url.Open(checkoutUrl);
-  }
+  
 
   return (
     <div className="mt-6">
@@ -87,9 +83,17 @@ function PricingTable({ product_id }: { product_id?: string }) {
   const formRef = React.useRef<HTMLFormElement>(null);
 
   async function getCheckoutURL_So_that_Users_Can_Buy() {
-    let checkoutUrl = await getCheckoutURL(491419, true);
-    window.open(checkoutUrl);
-    // window.LemonSqueezy.Url.Open(checkoutUrl);
+    // let checkoutUrl = await getCheckoutURL(485166, true);
+    // window.open(checkoutUrl);
+    // // window.LemonSqueezy.Url.Open(checkoutUrl);
+    await fetch("/api/payments/lemonsqueezy",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+    }).then((response)=>{
+      return response.json();
+    }).then((response)=>{
+      (window as any)?.LemonSqueezy.Url.Open(response.url);
+    })
   }
   return (
     <Card className="  md:w-1/3 px-6 bg-gray-50 ring-1 ring-gray-50 rounded m-6">

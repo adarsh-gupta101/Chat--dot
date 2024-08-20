@@ -57,7 +57,7 @@ export async function getCheckoutURL(variantId: number, embed = true) {
 
       productOptions: {
         enabledVariants: [variantId],
-        redirectUrl: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/billing/`,
+        redirectUrl: `${process.env.NODE_ENV === "production" ? "chat.adarsh-gupta.in" : process.env.NEXT_PUBLIC_APP_URL}/dashboard/`,
         receiptButtonText: "Go to Dashboard",
         receiptThankYouNote: "Thank you for signing up to Lemon Stand!",
       },
