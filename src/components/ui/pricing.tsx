@@ -82,19 +82,32 @@ function PricingTable({ product_id }: { product_id?: string }) {
   const clerk = useClerk();
   const formRef = React.useRef<HTMLFormElement>(null);
 
-  async function getCheckoutURL_So_that_Users_Can_Buy() {
-    // let checkoutUrl = await getCheckoutURL(485166, true);
-    // window.open(checkoutUrl);
-    // // window.LemonSqueezy.Url.Open(checkoutUrl);
-    await fetch("/api/payments/lemonsqueezy",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-    }).then((response)=>{
-      return response.json();
-    }).then((response)=>{
-      (window as any)?.LemonSqueezy.Url.Open(response.url);
-    })
-  }
+
+  const getCheckoutURL = async () => {
+    try {
+      const response = await fetch("/api/payments/lemonsqueezy", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to get checkout URL');
+      }
+
+      console.log("Response:", response);
+      
+      const res= await response.json();
+
+      if (res) {
+        window.open(res, '_blank');
+      }
+    } catch (error) {
+      console.error("Error getting checkout URL:", error);
+    }
+  };
+
+
+
   return (
     <Card className="  md:w-1/3 px-6 bg-gray-50 ring-1 ring-gray-50 rounded m-6">
       <CardHeader>
@@ -131,7 +144,7 @@ function PricingTable({ product_id }: { product_id?: string }) {
           <Button
             className="mt-4 bg-gradient-to-r w-full from-pink-700 to-blue-700"
             type="submit"
-            onClick={() => getCheckoutURL_So_that_Users_Can_Buy()}
+            onClick={() => getCheckoutURL()}
           >
             <JoystickIcon className="mr-2 h-4 w-4" />
             Buy Now✨
