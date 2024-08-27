@@ -330,11 +330,18 @@ export async function processWebhookEvent(webhookEvent: any) {
       throw new Error(`Failed to update webhook event: ${updateError.message}`);
     }
 
+    const { data: existingCredits, error: selectError } = await supabase
+      .from("credits")
+      .select("credits")
+      .eq("user_id", eventBody.meta.custom_data.user_id)
+      .single();
+
+    const newCredits = (existingCredits?.credits || 0) + 100000;
+
     const { error: creditError } = await supabase.from("credits").upsert(
       {
         user_id: eventBody.meta.custom_data.user_id,
-        // order_id: attributes.first_order_item.order_id,
-        credits: 100000,
+        credits: newCredits,
       },
       { onConflict: "user_id" }
     );
