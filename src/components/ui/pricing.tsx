@@ -159,9 +159,16 @@ function PricingTable() {
             className="mt-4 bg-gradient-to-r w-full from-pink-700 to-blue-700"
             type="submit"
             onClick={() => getCheckoutURL()}
+            disabled={isLoading} // Disable the button while loading
           >
-            <JoystickIcon className="mr-2 h-4 w-4" />
-            Buy Now✨
+            {isLoading ? (
+              <span>Loading...</span>
+            ) : (
+              <>
+                <JoystickIcon className="mr-2 h-4 w-4" />
+                Buy Now✨
+              </>
+            )}
           </Button>
         </SignedIn>
 
