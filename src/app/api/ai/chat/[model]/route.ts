@@ -32,25 +32,26 @@ export async function POST(
   request: NextRequest,
   { params }: { params: { model: ValidModel } }
 ) {
-  const user = await currentUser();
-  if (!user)
-    return NextResponse.json({ error: "User not found" }, { status: 400 });
-
-  const creditsRemaining = await getUserCredits(user.id);
-  if (creditsRemaining.credits < 100 || !creditsRemaining.success) {
-    return NextResponse.json(
-      { error: "Insufficient credits" },
-      { status: 402 }
-    );
-  }
-
-  if (!VALID_MODELS.includes(params.model)) {
-    return NextResponse.json({ error: "Invalid model" }, { status: 400 });
-  }
-
-  const { message, submodel, history } = await request.json();
-
   try {
+    const user = await currentUser();
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 401 });
+    }
+
+    const { credits, success } = await getUserCredits(user.id);
+    if (!success || credits < 100) {
+      return NextResponse.json(
+        { error: "Insufficient credits" },
+        { status: 402 }
+      );
+    }
+
+    if (!VALID_MODELS.includes(params.model)) {
+      return NextResponse.json({ error: "Invalid model" }, { status: 400 });
+    }
+
+    const { message, submodel, history } = await request.json();
+
     const result = await handleModelRequest(
       params.model,
       submodel,
@@ -60,9 +61,9 @@ export async function POST(
     );
     return result.toTextStreamResponse();
   } catch (error) {
-    console.error(`Failed to send message: `, error);
+    console.error(`Failed to process request:`, error);
     return NextResponse.json(
-      { error: "Failed to send message" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -85,40 +86,37 @@ async function handleModelRequest(
   return streamText({
     model: modelInstance(submodelMapper[submodel]),
     messages: [...history, { role: "user", content: message }],
-    async onFinish({ text, toolCalls, toolResults, usage, finishReason }) {
+    async onFinish({ usage, finishReason }) {
       console.log({ 
-        text: "...", 
-        toolCalls, 
-        toolResults: "...", 
         usage, 
         finishReason, 
         model 
       });
       if (usage.totalTokens > 0) {
-        deductCredit(userId, usage.totalTokens);
+        await deductCredit(userId, usage.totalTokens);
       }
     },
   });
 }
 
 function getApiKeyForModel(model: ValidModel): string {
-  switch (model) {
+   switch (model) {
     case "openai":
-      if (!process.env.OPENAI_API_KEY) {
+      if(!process.env.OPENAI_API_KEY){
         throw new Error("OPENAI_API_KEY is not set");
       }
       return process.env.OPENAI_API_KEY;
     case "claude":
-      if (!process.env.ANTHROPIC_API_KEY) {
+      if(!process.env.ANTHROPIC_API_KEY){
         throw new Error("ANTHROPIC_API_KEY is not set");
       }
       return process.env.ANTHROPIC_API_KEY;
     case "google":
-      if (!process.env.GOOGLE_API_KEY) {
+      if(!process.env.GOOGLE_API_KEY){
         throw new Error("GOOGLE_API_KEY is not set");
       }
       return process.env.GOOGLE_API_KEY;
-  }
+   }
 }
 
 function getModelInstance(model: ValidModel, apiKey: string) {

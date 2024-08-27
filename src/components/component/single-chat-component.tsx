@@ -13,6 +13,7 @@ import { useChatModel } from "@/libs/hooks/useChatModel";
 import { useSubModels } from "@/libs/hooks/useSubModels";
 import { useRouter } from "next/navigation";
 import { IconLayoutNavbarExpand, IconSend } from "@tabler/icons-react";
+import { ModeToggle } from "../theme-toggle";
 
 type Message = {
   role: "user" | "assistant";
@@ -85,30 +86,31 @@ function SingleChatComponent({ model }: { model: string }) {
   };
 
   return (
-    <div className="bg-gray-900 text-white h-[100vh] w-screen p-2 shadow-xl">
-      <header className="py-2 px-4 w-full flex items-center justify-start">
+    <div className="dark:bg-gray-900 bg-gray-100 dark:text-white text-gray-800 h-[100vh] w-screen p-2 shadow-xl">
+      <header className="py-2 px-4 w-full flex items-center justify-end">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-2">
             <span>{selectedModel.toUpperCase().replace(/_/g, " ")}</span>
 
-             <IconLayoutNavbarExpand className="text-white" />
+             <IconLayoutNavbarExpand className="dark:text-white text-gray-800" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-white border border-gray-200 rounded-md shadow-lg">
+          <DropdownMenuContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg">
             {submodels.map((model) => (
               <DropdownMenuItem
                 key={model}
                 onSelect={() => setSelectedModel(model as typeof selectedModel)}
-                className="px-4 py-2 text-gray-800 hover:bg-gray-100"
+                className="px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 {model.replace(/_/g, " ")}
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
+        <ModeToggle/>
       </header>
-      <div className="flex-1 overflow-auto p-4 space-y-4 h-[80vh] bg-gray-900 self-stretch">
+      <div className="flex-1 overflow-auto p-4 space-y-4 h-[80vh] bg-gray-100 dark:bg-gray-800 self-stretch">
         {messages.map((message, index) => (
           <div
             key={index}
@@ -120,7 +122,7 @@ function SingleChatComponent({ model }: { model: string }) {
               className={`${
                 message.role === "user"
                   ? "bg-blue-600 text-white max-w-[70%]"
-                  : "bg-gray-800 text-white max-w-[70%]"
+                  : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 max-w-[70%]"
               } rounded-lg p-1 px-6 `}
             >
               {renderMessageContent(message.content)}
@@ -129,7 +131,7 @@ function SingleChatComponent({ model }: { model: string }) {
         ))}
         {isStreaming && (
           <div className="flex justify-start">
-            <div className="bg-gray-800 text-white rounded-lg p-2 max-w-lg">
+            <div className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg p-2 max-w-lg">
               {renderMessageContent(streamedMessage)}
             </div>
           </div>
@@ -146,14 +148,14 @@ function SingleChatComponent({ model }: { model: string }) {
               handleSubmit(e);
             }
           }}
-          className="flex-1  border border-gray-300 rounded-l-lg"
+          className="flex-1  border border-gray-300 dark:border-gray-700 rounded-l-lg dark:bg-gray-800 dark:text-white"
           placeholder="Type your message here..."
           disabled={loading}
         />
         <Button
           onClick={handleSubmit}
           disabled={loading}
-          className=" bg-gray-600 text-white mx-2"
+          className=" bg-gray-600 dark:bg-gray-700 text-white mx-2"
         >
           <IconSend />
         </Button>

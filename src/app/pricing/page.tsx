@@ -22,7 +22,7 @@ function Page() {
   }
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900">
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
       <HeaderComponent/>
        <Script
         src="https://assets.lemonsqueezy.com/lemon.js"
