@@ -24,7 +24,7 @@ export const useUIBuildModel = ( model:string,submodel: string) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({  message, submodel }),
         });
-        console.log({response})
+        // console.log({response})
         if (!response.ok) {
           throw new Error("API response was not ok");
         }
@@ -38,7 +38,7 @@ export const useUIBuildModel = ( model:string,submodel: string) => {
           console.log({done, value});
           if (done) break;
           const chunk = decoder.decode(value);
-          console.log({ chunk: chunk});
+          // console.log({ chunk: chunk});
           accumulatedResponse += chunk;
           onUpdate(chunk); // Call the callback with each chunk
         }

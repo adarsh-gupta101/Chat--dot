@@ -9,7 +9,7 @@ type Message = {
 };
 
 export const useChatModel = (model: string, submodel: string) => {
-  console.log({ model, submodel})
+  // console.log({ model, submodel})
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,7 +35,7 @@ export const useChatModel = (model: string, submodel: string) => {
           if (response.headers.get("Content-Type")?.includes("application/json")) {
             let res = response.json();
             res.then((data) => {
-              console.log(data);
+              // console.log(data);
               setError(data.error);
               // Check if the error is 402 (Insufficient credits)
               if (response.status === 402) {
@@ -61,7 +61,7 @@ export const useChatModel = (model: string, submodel: string) => {
           console.log({ done, value });
           if (done) break;
           const chunk = decoder.decode(value);
-          console.log({ chunk: chunk });
+          // console.log({ chunk: chunk });
           accumulatedResponse += chunk;
           onUpdate(chunk); // Call the callback with each chunk
         }
