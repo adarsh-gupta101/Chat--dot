@@ -16,7 +16,7 @@ import FooterComponent from "@/components/ui/footer";
 function Page() {
   const [credits, setCredits] = React.useState(0);
   useEffect(() => {
-    let creditsFetch = fetch("/api/user/", {
+    fetch("/api/user/", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -55,7 +55,7 @@ export default Page;
     <Card>
       <CardHeader className="pb-2">
         <CardDescription>Credits Remaining</CardDescription>
-        <CardTitle className="text-4xl">{credits}</CardTitle>
+        <CardTitle className="text-4xl">{credits?credits:0}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="text-xs text-muted-foreground"></div>
