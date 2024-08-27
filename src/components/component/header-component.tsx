@@ -1,14 +1,20 @@
-
+"use client"
 import Link from "next/link"
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import logo from "../../../public/logo.png";
 import Image from "next/image";
 import { ModeToggle } from "../theme-toggle";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, useClerk, useUser } from "@clerk/nextjs";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { LogOut } from "lucide-react";
 
 
 export function HeaderComponent() {
+  const { user } = useUser();
+  const { signOut } = useClerk();
+
   return (
     <header className="flex items-center justify-between h-16 px-4 bg-background border-b md:px-6">
       <div className="flex items-center gap-4">
@@ -36,9 +42,34 @@ export function HeaderComponent() {
         </SignedOut>
 
         <SignedIn>
-          <UserButton/>
+        
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Avatar>
+                    <AvatarImage src={user?.imageUrl} alt={user?.fullName as string ||""} />
+                    <AvatarFallback>{user?.fullName?.slice(0, 2).toUpperCase()}</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56" align="end" forceMount>
+                  <DropdownMenuLabel>{user?.fullName}</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem asChild>
+                      <Link href="/profile">Profile</Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    className="flex cursor-pointer items-center text-destructive focus:text-destructive"
+                    onSelect={() => signOut()}
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+         
         </SignedIn>
-
 
         <ModeToggle/>
       </nav>

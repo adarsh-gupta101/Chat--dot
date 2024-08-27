@@ -4,7 +4,7 @@ import React from "react";
 
 function FooterComponent() {
   return (
-    <footer className="flex md:flex-row flex-col justify-between items-center border-t-2 p-8">
+    <footer className=" bg-white w-full flex md:flex-row flex-col justify-between items-center border-t-2 p-2 px-6">
       <div className="">
         <Image src="/logo.png" alt="logo" width={50} height={50} />
         <p className="font-bold ">Chat-dot</p>

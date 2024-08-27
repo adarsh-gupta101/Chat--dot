@@ -29,6 +29,12 @@ import { SignIn } from "@clerk/clerk-react";
 import { useUser, useSignIn, useClerk } from "@clerk/nextjs";
 import Script from "next/script";
 
+  declare global {
+          interface Window {
+            LemonSqueezy: any;
+          }
+        }
+
 function Pricing() {
   useEffect(() => {
     if (typeof (window as any).createLemonSqueezy === "function") {
@@ -59,11 +65,7 @@ function Pricing() {
 
       <div className="flex md:flex-row flex-col justify-center mt-16">
         <PricingTable
-          product_id={`${
-            process.env.NODE_ENV == "production"
-              ? "price_1OJDxeSHBIS48Dl7JOmVMxhk"
-              : "price_1OJBI4SHBIS48Dl7RwjXoZKk"
-          }`}
+         
           // product_id="price_1OJDxeSHBIS48Dl7JOmVMxhk"
         />
 
@@ -75,7 +77,7 @@ function Pricing() {
 
 export default Pricing;
 
-function PricingTable({ product_id }: { product_id?: string }) {
+function PricingTable() {
   let { isSignedIn } = useUser();
   const { signIn } = useSignIn();
   const [isUserSignedIn, setIsUserSignedIn] = React.useState(isSignedIn);
@@ -99,7 +101,9 @@ function PricingTable({ product_id }: { product_id?: string }) {
       const res= await response.json();
 
       if (res) {
-        window.open(res, '_blank');
+      
+        // window.open(res, '_blank');
+        window.LemonSqueezy.Url.Open(res);
       }
     } catch (error) {
       console.error("Error getting checkout URL:", error);

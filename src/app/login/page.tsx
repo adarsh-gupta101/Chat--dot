@@ -9,7 +9,7 @@ function LoginPage() {
         <HeaderComponent/>
         <div className="flex justify-center items-center h-[100%] mt-16">
 
-        <SignIn/>
+        <SignIn routing='hash'/>
         </div>
 
         <FooterComponent/>
