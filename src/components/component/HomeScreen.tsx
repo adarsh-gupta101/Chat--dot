@@ -18,7 +18,7 @@ export default function HomeScreen() {
     <div className="flex flex-col justify-center  w-full">
       <HeaderComponent></HeaderComponent>
 
-      <div className="flex flex-col m-2 md:m-16 min-h-96  justify-center my-32 text-balance">
+      <div className="flex flex-col m-4 md:m-16 min-h-96 justify-center my-16 md:my-32 text-balance">
         <HeroHighlight>
           <motion.h1
             initial={{
@@ -33,7 +33,7 @@ export default function HomeScreen() {
               duration: 0.5,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="text-3xl px-4 md:text-5xl lg:text-6xl font-bold   max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+            className="text-2xl px-4 md:text-4xl lg:text-6xl font-bold max-w-4xl leading-snug md:leading-normal lg:leading-snug text-center mx-auto"
           >
             Save 80% on AI Bills <br />
             <Highlight className="block text-black p-1">
@@ -42,16 +42,16 @@ export default function HomeScreen() {
           </motion.h1>
         </HeroHighlight>
 
-        <p className="text-center text-gray-500 dark:text-gray-300 text-xl mt-6">
+        <p className="text-center text-gray-500 dark:text-gray-300 text-base md:text-xl mt-4 md:mt-6">
           Now one can live without AI now but price shouldn&apos;t be something
           that holds you back.{" "}
         </p>
 
-          <Button className="mt-6 mx-auto p-6 text-lg bg-green-400 dark:bg-yellow-300 text-black hover:bg-green-500 ring-1 ring-gray-400">
-        <Link href="/pricing">
+        <Button className="mt-6 mx-auto px-4 py-3 md:px-6 md:py-4 text-base md:text-lg bg-green-400 dark:bg-yellow-300 text-black hover:bg-green-500 ring-1 ring-gray-400">
+          <Link href="/pricing">
             Buy Now🚀
-        </Link>
-          </Button>
+          </Link>
+        </Button>
       </div>
 
       <div className="flex justify-center items-center">

@@ -1,40 +1,36 @@
 "use client";
-import Header from "@/components/ui/Header";
-import { getCheckoutURL, storeWebhookEvent, syncPlans } from "@/libs/lemonsqueezy";
-import { getAuthenticatedUser } from "@lemonsqueezy/lemonsqueezy.js"
+import { Suspense, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
-import Image from "next/image";
 import Script from "next/script";
-import { useEffect } from "react";
 import HomeScreen from "@/components/component/HomeScreen";
+import Loading from "./loading";
+import { getCheckoutURL } from "@/libs/lemonsqueezy";
 
 export default function Home() {
-  const user= useUser();
-  console.log(user);
+  const user = useUser();
+
   useEffect(() => {
     if (typeof (window as any).createLemonSqueezy === "function") {
       (window as any).createLemonSqueezy?.();
     }
-
-    // syncPlans()
   }, []);
+
   async function getCheckoutURL_So_that_Users_Can_Buy() {
-    let checkoutUrl = await getCheckoutURL(472559, true);
-    // window.open(checkoutUrl);
+    const checkoutUrl = await getCheckoutURL(472559, true);
     (window as any).LemonSqueezy.Url.Open(checkoutUrl);
   }
 
   return (
-    <main className="w-full ">
+    <main className="w-full">
       <Script
         src="https://assets.lemonsqueezy.com/lemon.js"
         defer
         strategy="lazyOnload"
-        // onLoad={() => {
-        //   window!.createLemonSqueezy();
-        // }}
-      ></Script>
-     <HomeScreen/>
+      />
+
+      <Suspense fallback={<Loading />}>
+        <HomeScreen />
+      </Suspense>
     </main>
   );
 }
