@@ -65,8 +65,16 @@ export async function POST(request: Request) {
     const webhookEventId = await storeWebhookEvent(data.meta.event_name, data);
 
     console.log("Webhook event stored", webhookEventId);
-    // Non-blocking call to process the webhook event.
-    void processWebhookEvent(webhookEventId);
+
+    // Call processWebhookEvent directly and await its completion
+    try {
+      await processWebhookEvent(webhookEventId);
+      console.log("Webhook event processed successfully");
+    } catch (error) {
+      console.error("Error processing webhook event:", error);
+      // Handle the error appropriately (e.g., log, send error response)
+      return new Response("Error processing webhook event", { status: 500 });
+    }
 
     return new Response("OK", { status: 200 });
   }
