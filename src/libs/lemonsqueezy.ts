@@ -34,6 +34,10 @@ export async function getCheckoutURL(variantId: number, embed = false) {
   const { userId } = auth();
   const user = await currentUser();
 
+  if (!user) {
+    throw new Error("User not found. Please log in to proceed.");
+  }
+
   // get email
   const userEmail = user?.emailAddresses[0].emailAddress ?? "";
 
@@ -58,11 +62,11 @@ export async function getCheckoutURL(variantId: number, embed = false) {
         enabledVariants: [variantId],
         redirectUrl: `${
           process.env.NODE_ENV === "production"
-            ? "https://chat.adarsh-gupta.in"
+            ? "https://chat.adarsh-gupta.in/dashboard"
             : process.env.NEXT_PUBLIC_APP_URL
         }/dashboard/`,
         receiptButtonText: "Go to Dashboard",
-        receiptThankYouNote: "Thank you for signing up to Lemon Stand!",
+        receiptThankYouNote: "Thank you for signing up!!",
       },
     }
   );

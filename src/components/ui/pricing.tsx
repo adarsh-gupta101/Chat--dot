@@ -87,14 +87,15 @@ function PricingTable() {
         headers: { "Content-Type": "application/json" },
       });
 
+      console.log({response})
       if (!response.ok) {
         throw new Error("Failed to get checkout URL");
       }
 
-      // console.log("Response:", response);
-
+      
       const res = await response.json();
-
+      
+      console.log("Response:", res);
       if (res) {
         // window.open(res, '_blank');
         window.LemonSqueezy.Url.Open(res);
