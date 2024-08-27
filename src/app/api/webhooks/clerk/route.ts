@@ -61,7 +61,7 @@ export async function POST(req: Request) {
           await supabase.from("credits").upsert(
             {
               user_id: id,
-              credits: 0,
+              credits: 200,
             },
             {
               onConflict: "user_id",

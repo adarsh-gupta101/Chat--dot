@@ -295,7 +295,7 @@ export async function processWebhookEvent(webhookEvent: any) {
 
     const updateData = {
       lemon_squeezy_id: eventBody.data.id,
-      order_id: attributes.order_id,
+      order_id: attributes.first_order_item.order_id,
       name: attributes.user_name,
       email: attributes.user_email,
       status: attributes.status,
