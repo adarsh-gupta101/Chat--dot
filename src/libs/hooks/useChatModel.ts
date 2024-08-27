@@ -58,7 +58,7 @@ export const useChatModel = (model: string, submodel: string) => {
 
         while (true) {
           const { done, value } = await reader!.read();
-          console.log({ done, value });
+          // console.log({ done, value });
           if (done) break;
           const chunk = decoder.decode(value);
           // console.log({ chunk: chunk });
