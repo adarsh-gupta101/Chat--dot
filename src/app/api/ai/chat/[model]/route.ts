@@ -111,6 +111,11 @@ function getApiKeyForModel(model: ValidModel): string {
         throw new Error("ANTHROPIC_API_KEY is not set");
       }
       return process.env.ANTHROPIC_API_KEY;
+    case "google":
+      if(!process.env.GOOGLE_API_KEY){
+        throw new Error("GOOGLE_API_KEY is not set");
+      }
+      return process.env.GOOGLE_API_KEY;
    }
 }
 
