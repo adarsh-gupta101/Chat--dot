@@ -110,7 +110,17 @@ export function HeaderComponent() {
             </Link>
             </SignedOut>
             <SignedIn>
-              <UserIcon className="w-4 h-4" />
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Link href="/profile">
+                  
+                  <Avatar>
+                    <AvatarImage src={user?.imageUrl} alt={user?.fullName as string ||""} />
+                    <AvatarFallback>{user?.fullName?.slice(0, 2).toUpperCase()}</AvatarFallback>
+                  </Avatar>
+                  </Link>
+                </DropdownMenuTrigger>
+              </DropdownMenu>
             </SignedIn>
 
             <ModeToggle/>
