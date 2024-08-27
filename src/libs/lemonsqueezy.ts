@@ -25,7 +25,6 @@ const configureLemonSqueezy = lemonSqueezySetup({
 });
 
 export async function getCheckoutURL(variantId: number, embed = true) {
-
   if (!Number.isInteger(variantId) || variantId <= 0) {
     throw new Error("Invalid variantId. Must be a positive integer.");
   }
@@ -57,14 +56,17 @@ export async function getCheckoutURL(variantId: number, embed = true) {
 
       productOptions: {
         enabledVariants: [variantId],
-        redirectUrl: `${process.env.NODE_ENV === "production" ? "chat.adarsh-gupta.in" : process.env.NEXT_PUBLIC_APP_URL}/dashboard/`,
+        redirectUrl: `${
+          process.env.NODE_ENV === "production"
+            ? "https://chat.adarsh-gupta.in"
+            : process.env.NEXT_PUBLIC_APP_URL
+        }/dashboard/`,
         receiptButtonText: "Go to Dashboard",
         receiptThankYouNote: "Thank you for signing up to Lemon Stand!",
       },
     }
   );
 
-  
   return checkout.data?.data.attributes.url;
 }
 
@@ -204,7 +206,6 @@ export async function processWebhookEvent(webhookEvent: any) {
 
   const eventBody = webhookEvent[0].body;
 
-
   if (
     webhookEvent[0].event_name.startsWith("subscription_updated") ||
     webhookEvent[0].event_name.startsWith("subscription_created")
@@ -249,12 +250,10 @@ export async function processWebhookEvent(webhookEvent: any) {
       throw new Error(`Failed to upsert subscription: ${upsertError.message}`);
     }
 
-    /** 
+    /**
      * Mark the webhook event as processed
      * You can remove the webhook from the db if it is processed successfully
-    */
-    
-
+     */
 
     const { error: updateError } = await supabase
       .from("webhook_events")
@@ -266,14 +265,14 @@ export async function processWebhookEvent(webhookEvent: any) {
   }
 
   // payment success email
-  if(webhookEvent[0].event_name.startsWith("subscription_payment_success")) {
+  if (webhookEvent[0].event_name.startsWith("subscription_payment_success")) {
     const attributes = eventBody.data.attributes;
 
-    PaymentSuccessEmail(attributes.user_email, attributes.user_name)
+    PaymentSuccessEmail(attributes.user_email, attributes.user_name);
   }
 
   //if single order item
-  if(webhookEvent[0].event_name.startsWith("order_created")) {
+  if (webhookEvent[0].event_name.startsWith("order_created")) {
     const attributes = eventBody.data.attributes;
     const variantId = attributes.first_order_item.variant_id;
 
@@ -314,10 +313,10 @@ export async function processWebhookEvent(webhookEvent: any) {
       throw new Error(`Failed to upsert subscription: ${upsertError.message}`);
     }
 
-    /** 
+    /**
      * Mark the webhook event as processed
      * You can remove the webhook from the db if it is processed successfully
-    */
+     */
     const { error: updateError } = await supabase
       .from("webhook_events")
       .update({ processed: true })
@@ -326,17 +325,19 @@ export async function processWebhookEvent(webhookEvent: any) {
       throw new Error(`Failed to update webhook event: ${updateError.message}`);
     }
 
-    const {error:creditError} = await supabase.from("credits").upsert({
-      user_id: eventBody.meta.custom_data.user_id,
-      // order_id: attributes.first_order_item.order_id,
-      credits: 100000
-    },{onConflict:"user_id"})
-    
-    if(creditError){
+    const { error: creditError } = await supabase.from("credits").upsert(
+      {
+        user_id: eventBody.meta.custom_data.user_id,
+        // order_id: attributes.first_order_item.order_id,
+        credits: 100000,
+      },
+      { onConflict: "user_id" }
+    );
+
+    if (creditError) {
       throw new Error(`Failed to upsert credits: ${creditError.message}`);
     }
   }
-
 }
 
 export async function getUserSubscription() {
@@ -420,7 +421,6 @@ export async function pauseUserSubscription(id: string) {
   const subscription = userSubscriptions?.find(
     (sub) => sub.lemon_squeezy_id === id
   );
-
 
   if (!subscription) {
     throw new Error(`Subscription #${id} not found.`);
@@ -516,7 +516,7 @@ export async function changePlan(currentPlanId: number, newPlanId: number) {
     .eq("id", newPlanId)
     .single();
 
-    console.log(newPlan,"new plan")
+  console.log(newPlan, "new plan");
   // Send request to Lemon Squeezy to change the subscription.
   const updatedSub = await updateSubscription(subscription.lemon_squeezy_id, {
     variantId: newPlan.data?.variant_id,
