@@ -5,7 +5,7 @@ import React from 'react'
 
 function LoginPage() {
   return (
-    <div className=''>
+    <div className='h-screen'>
         <HeaderComponent/>
         <div className="flex justify-center items-center h-[100%] mt-16">
 
