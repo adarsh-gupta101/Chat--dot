@@ -80,8 +80,8 @@ function PricingTable() {
   const [isLoading, setIsLoading] = React.useState(false);
 
   const getCheckoutURL = async () => {
-    setIsLoading(true);
     try {
+      setIsLoading(true); // Set loading state to true before making the request
       const response = await fetch("/api/payments/lemonsqueezy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -95,15 +95,19 @@ function PricingTable() {
       
       const res = await response.json();
       
-      console.log("Response:", res);
-      if (res) {
-        // window.open(res, '_blank');
+      // console.log("Response:", response);
+      if (res && window.LemonSqueezy && window.LemonSqueezy.Url) {
         window.LemonSqueezy.Url.Open(res);
+      } else {
+        console.error("LemonSqueezy or LemonSqueezy.Url is not available");
+        // Handle the case when LemonSqueezy or LemonSqueezy.Url is not available
+        // For example, you can open the URL in a new tab as a fallback
+        window.open(res, '_blank');
       }
     } catch (error) {
       console.error("Error getting checkout URL:", error);
     } finally {
-      setIsLoading(false);
+      setIsLoading(false); // Set loading state back to false after the request is completed
     }
   };
 
@@ -146,19 +150,9 @@ function PricingTable() {
             className="mt-4 bg-gradient-to-r w-full from-pink-700 to-blue-700"
             type="submit"
             onClick={() => getCheckoutURL()}
-            disabled={isLoading}
           >
-            {isLoading ? (
-              <div className="flex items-center justify-center">
-                <span className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white mr-2"></span>
-                Loading...
-              </div>
-            ) : (
-              <>
-                <JoystickIcon className="mr-2 h-4 w-4" />
-                Buy Now✨
-              </>
-            )}
+            <JoystickIcon className="mr-2 h-4 w-4" />
+            Buy Now✨
           </Button>
         </SignedIn>
 
