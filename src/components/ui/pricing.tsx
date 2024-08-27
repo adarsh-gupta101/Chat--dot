@@ -77,7 +77,10 @@ function PricingTable() {
   const clerk = useClerk();
   const formRef = React.useRef<HTMLFormElement>(null);
 
+  const [isLoading, setIsLoading] = React.useState(false);
+
   const getCheckoutURL = async () => {
+    setIsLoading(true);
     try {
       const response = await fetch("/api/payments/lemonsqueezy", {
         method: "POST",
@@ -88,7 +91,7 @@ function PricingTable() {
         throw new Error("Failed to get checkout URL");
       }
 
-      console.log("Response:", response);
+      // console.log("Response:", response);
 
       const res = await response.json();
 
@@ -98,6 +101,8 @@ function PricingTable() {
       }
     } catch (error) {
       console.error("Error getting checkout URL:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -140,9 +145,19 @@ function PricingTable() {
             className="mt-4 bg-gradient-to-r w-full from-pink-700 to-blue-700"
             type="submit"
             onClick={() => getCheckoutURL()}
+            disabled={isLoading}
           >
-            <JoystickIcon className="mr-2 h-4 w-4" />
-            Buy Now✨
+            {isLoading ? (
+              <div className="flex items-center justify-center">
+                <span className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white mr-2"></span>
+                Loading...
+              </div>
+            ) : (
+              <>
+                <JoystickIcon className="mr-2 h-4 w-4" />
+                Buy Now✨
+              </>
+            )}
           </Button>
         </SignedIn>
 
