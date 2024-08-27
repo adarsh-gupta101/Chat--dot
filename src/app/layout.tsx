@@ -19,6 +19,9 @@ const inter = Poppins({
 export const metadata: Metadata = {
   title: "Chat-dot",
   description: "Chat with All AI Apps under one roof",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -29,6 +32,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className={inter.className}>
+        <head>
+          <link rel="icon" href="/logo.png" />
+        </head>
         <body>
           <ThemeProvider
             attribute="class"
