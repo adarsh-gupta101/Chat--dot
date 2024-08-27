@@ -10,7 +10,7 @@ export async function GET() {
   // fetch credit details
   let { success, credits, message } = await getUserCredits(user.id);
   if (!success) {
-    return NextResponse.json({ error: message }, { status: 400 });
+    return NextResponse.json({ error: message,credits:0 }, { status: 400 });
   }
   return NextResponse.json({ credits }, { status: 200 });
 }
