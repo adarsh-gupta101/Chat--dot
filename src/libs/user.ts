@@ -40,9 +40,8 @@ export async function getUserCredits(user_id: string) {
     throw error;
   }
 
-  if (!data || data.credits <= 0) {
-    // User has no credits
-    return { success: false, message: "Insufficient credits" ,credits:data.credits};
+  if (!data || !data.credits || data.credits <= 0) {
+    return { success: false, message: "Insufficient credits", credits: 0 };
   }
 
   return { success: true, credits: data.credits };
@@ -50,6 +49,9 @@ export async function getUserCredits(user_id: string) {
 
 export async function deductCredit(user_id: string, amount: number) {
   let oldCredits = await getUserCredits(user_id);
+  if (!oldCredits.success) {
+    return oldCredits; // Return the error response from getUserCredits
+  }
   console.log({amount,old:oldCredits?.credits})
   console.log({oldCredits: oldCredits, amount})
   const { data, error } = await supabase
