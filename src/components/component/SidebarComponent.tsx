@@ -25,7 +25,7 @@ export function SidebarComponent() {
   // fetch credits remaining
 
   useEffect(()=>{
-   fetch("/api/user/", {
+   fetch("/api/user", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
