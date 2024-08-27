@@ -14,30 +14,18 @@ import { renderMessageContent } from "@/libs/utils/markdown-parser";
 import { useChatModel } from "@/libs/hooks/useChatModel";
 import { useRouter } from "next/navigation";
 import { IconSend } from "@tabler/icons-react";
+import { MODEL_OPTIONS } from "@/constants/model-options";
 
 type Message = {
   role: "user" | "assistant";
   content: string;
 };
 
-const MODEL_OPTIONS = [
-  "claude-3-5-sonnet",
-  "claude-3-opus",
-  "claude-3-sonnet",
-  "claude-3-haiku",
-  "gpt-3.5-turbo",
-  "gpt-4omini",
-  "gpt-4o",
-  "llama-3.1-70b",
-  "llama-3.1-405b",
-  "gemini-1.5-flash",
-  "gemini-1.5-pro",
-] as const;
-
 interface ChatComponentProps {
   isSyncChat: boolean;
   syncMessage: string;
-  sendMessagetoAll: boolean;
+  sendMessagetoAll: string;
+  resetSendMessagetoAll: () => void;
   index: number;
 }
 
@@ -45,6 +33,7 @@ export function ChatComponent({
   isSyncChat,
   syncMessage,
   sendMessagetoAll,
+  resetSendMessagetoAll,
   index,
 }: ChatComponentProps) {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -58,19 +47,16 @@ export function ChatComponent({
   const { sendMessage, isLoading, error } = useChatModel(provider, selectedModel);
   const router = useRouter();
 
-  // Redirect to pricing if an error occurs
-  useEffect(() => {
-    if (error) {
-      router.push("/pricing");
-    }
-  }, [error, router]);
+
 
   // Handle syncing messages across all chat components
   useEffect(() => {
-    if (isSyncChat && syncMessage && sendMessagetoAll) {
-      handleSubmit(syncMessage);
+    if (isSyncChat && sendMessagetoAll) {
+      handleSubmit(sendMessagetoAll);
+      resetSendMessagetoAll();
     }
-  }, [isSyncChat, syncMessage, sendMessagetoAll]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ isSyncChat, resetSendMessagetoAll, sendMessagetoAll]);
 
   // Update provider based on selected model
   useEffect(() => {
@@ -123,6 +109,7 @@ export function ChatComponent({
     [inputMessage, isLoading, sendMessage, messages]
   );
 
+  // Update the MessageBubble component to use a more semantic HTML tag
   function MessageBubble({ message }: { message: Message }) {
     return (
       <div
@@ -130,9 +117,11 @@ export function ChatComponent({
           message.role === "user"
             ? "bg-blue-400 dark:bg-blue-600 text-white"
             : "bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
-        } rounded-lg p-1 px-6 max-w-lg`}
+        } rounded-lg p-1 px-6 max-w-lg my-2`}
       >
-        {renderMessageContent(message.content)}
+        <div className="">
+          {renderMessageContent(message.content)}
+        </div>
       </div>
     );
   }

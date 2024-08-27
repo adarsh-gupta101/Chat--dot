@@ -7,7 +7,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { deductCredit, getUserCredits } from "@/libs/user";
 
 const VALID_MODELS = ["openai", "claude", "google"] as const;
-type ValidModel = typeof VALID_MODELS[number];
+type ValidModel = (typeof VALID_MODELS)[number];
 
 const submodelMapper: Record<string, string> = {
   "claude-3-haiku": "claude-3-haiku-20240307",
@@ -51,11 +51,20 @@ export async function POST(
   const { message, submodel, history } = await request.json();
 
   try {
-    const result = await handleModelRequest(params.model, submodel, message, history, user.id);
+    const result = await handleModelRequest(
+      params.model,
+      submodel,
+      message,
+      history,
+      user.id
+    );
     return result.toTextStreamResponse();
   } catch (error) {
-    console.error(`Failed to send message: ${error}`);
-    return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
+    console.error(`Failed to send message: `, error);
+    return NextResponse.json(
+      { error: "Failed to send message" },
+      { status: 500 }
+    );
   }
 }
 
@@ -66,6 +75,10 @@ async function handleModelRequest(
   history: Message[],
   userId: string
 ) {
+  if (!submodelMapper[submodel]) {
+    throw new Error(`Invalid submodel: ${submodel}`);
+  }
+
   const apiKey = getApiKeyForModel(model);
   const modelInstance = getModelInstance(model, apiKey);
 
@@ -73,7 +86,14 @@ async function handleModelRequest(
     model: modelInstance(submodelMapper[submodel]),
     messages: [...history, { role: "user", content: message }],
     async onFinish({ text, toolCalls, toolResults, usage, finishReason }) {
-      console.log({ text, toolCalls, toolResults, usage, finishReason, model });
+      console.log({ 
+        text: "...", 
+        toolCalls, 
+        toolResults: "...", 
+        usage, 
+        finishReason, 
+        model 
+      });
       if (usage.totalTokens > 0) {
         deductCredit(userId, usage.totalTokens);
       }
@@ -84,11 +104,20 @@ async function handleModelRequest(
 function getApiKeyForModel(model: ValidModel): string {
   switch (model) {
     case "openai":
-      return process.env.OPENAI_API_KEY!;
+      if (!process.env.OPENAI_API_KEY) {
+        throw new Error("OPENAI_API_KEY is not set");
+      }
+      return process.env.OPENAI_API_KEY;
     case "claude":
-      return process.env.ANTHROPIC_API_KEY!;
+      if (!process.env.ANTHROPIC_API_KEY) {
+        throw new Error("ANTHROPIC_API_KEY is not set");
+      }
+      return process.env.ANTHROPIC_API_KEY;
     case "google":
-      return process.env.GOOGLE_API_KEY!;
+      if (!process.env.GOOGLE_API_KEY) {
+        throw new Error("GOOGLE_API_KEY is not set");
+      }
+      return process.env.GOOGLE_API_KEY;
   }
 }
 

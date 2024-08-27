@@ -1,4 +1,5 @@
 import { HeaderComponent } from "@/components/component/header-component";
+import FooterComponent from "@/components/ui/footer";
 import React from "react";
 
 function Tos() {
@@ -59,6 +60,7 @@ function Tos() {
           </div>
         </div>
       </div>
+      <FooterComponent/>
     </div>
   );
 }

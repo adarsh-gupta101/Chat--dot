@@ -3,11 +3,10 @@ import React from 'react'
 
 function Loading() {
   return (
-    <div>
-        <div className="flex items-center justify-center h-screen">
-            <IconLoader2/>
-        </div>
-      
+    <div className="flex items-center justify-center h-screen">
+      <div className="animate-spin">
+        <IconLoader2 className="w-8 h-8 text-blue-500" />
+      </div>
     </div>
   )
 }

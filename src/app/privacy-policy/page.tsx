@@ -22,7 +22,7 @@ function PrivacyPolicy() {
             </div>
           </div>
         </div>
-        <div className="w-full py-6">
+        <div className="w-3/4 py-6 mx-auto">
           <div className="container px-4 md:px-6">
             <div className="prose prose-lg prose-gray max-w-none dark:prose-invert"> {/* Increase font size */}
               <h2>Interpretation and Definitions</h2>

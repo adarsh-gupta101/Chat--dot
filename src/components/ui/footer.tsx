@@ -10,18 +10,22 @@ function FooterComponent() {
         <p className="font-bold ">Chat-dot</p>
       </div>
 
-      <div >
-        <ul className="flex">
+      <div>
+        <ul className="flex flex-col md:flex-row items-center">
           <Link href="/">
-            <li className="hover:text-gray-500 hover:underline m-1 border-r-2 p-1">Home</li>
+            <li className="hover:text-gray-500 hover:underline m-1 md:border-r-2 p-1">
+              Home
+            </li>
           </Link>
           <Link href="/privacy-policy">
-            {" "}
-            <li className="hover:text-gray-500 hover:underline m-1 border-r-2 p-1">Privacy Policy</li>
+            <li className="hover:text-gray-500 hover:underline m-1 md:border-r-2 p-1">
+              Privacy Policy
+            </li>
           </Link>
           <Link href="/tos">
-            <li className="hover:text-gray-500 hover:underline m-1  p-1
- border-r-2">Terms of Services</li>
+            <li className="hover:text-gray-500 hover:underline m-1 p-1">
+              Terms of Services
+            </li>
           </Link>
         </ul>
       </div>

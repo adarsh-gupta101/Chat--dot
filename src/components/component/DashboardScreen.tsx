@@ -16,7 +16,7 @@ function DashboardScreen() {
   const [chatCount, setChatCount] = useState(1);
   const [isSyncChat, setIsSyncChat] = useState(false);
   const [syncMessage, setSyncMessage] = useState("");
-  const [sendMessagetoAll, setSendMessagetoAll] = useState(false);
+  const [sendMessagetoAll, setSendMessagetoAll] = useState("");
   const { toast } = useToast();
 
   const handleSyncChatToggle = useCallback(() => {
@@ -52,12 +52,12 @@ function DashboardScreen() {
 
   const handleSendButtonClick = () => {
     if (isSyncChat && syncMessage.trim()) {
-      setSendMessagetoAll(true);
-      setTimeout(() => {
-        setSendMessagetoAll(false);
-        setSyncMessage("");
-      }, 500);
+      setSendMessagetoAll(syncMessage.trim());
     }
+  };
+
+  const resetSendMessagetoAll = () => {
+    setSendMessagetoAll("");
   };
 
   const getGridClasses = (count: number) => {
@@ -114,6 +114,7 @@ function DashboardScreen() {
               isSyncChat={isSyncChat}
               syncMessage={syncMessage}
               sendMessagetoAll={sendMessagetoAll}
+              resetSendMessagetoAll={resetSendMessagetoAll}
               index={index}
             />
           ))}
@@ -160,7 +161,7 @@ const CustomSwitch = ({
       className="sr-only"
     />
     <div
-      className={`w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors duration-200 ease-in-out ${
+      className={`w-11 h-6 bg-gray-300 dark:bg-gray-700 rounded-full transition-colors duration-200 ease-in-out ${
 
         isSyncChat ? "bg-blue-600" : ""
       }`}

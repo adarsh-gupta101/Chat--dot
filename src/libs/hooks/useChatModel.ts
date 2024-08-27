@@ -23,7 +23,7 @@ export const useChatModel = (model: string, submodel: string) => {
         return "Error: Invalid model";
       }
 
-      setIsLoading(true);
+      setIsLoading(true); 
       try {
         const response = await fetch(`/api/ai/chat/${model}`, {
           method: "POST",
@@ -32,12 +32,23 @@ export const useChatModel = (model: string, submodel: string) => {
         });
         // console.log(response.json())
         if (!response.ok) {
-          let res = response.json();
-          // setError(response.body.error)
-          res.then((data) => {
-            console.log(data);
-            setError(data.error);
-          });
+          if (response.headers.get("Content-Type")?.includes("application/json")) {
+            let res = response.json();
+            res.then((data) => {
+              console.log(data);
+              setError(data.error);
+              // Check if the error is 402 (Insufficient credits)
+              if (response.status === 402) {
+                // Redirect to the pricing page
+                window.location.href = "/pricing";
+              }
+            }).catch((error) => {
+              console.error("Error parsing JSON:", error);
+              setError( error);
+            });
+          } else {
+            setError("An error occurred. Please try again.");
+          }
           throw new Error("API response was not ok");
         }
 
@@ -63,7 +74,7 @@ export const useChatModel = (model: string, submodel: string) => {
         setIsLoading(false);
       }
     },
-    [model]
+    [model,submodel]
   );
 
   return { sendMessage, isLoading ,error};
