@@ -10,6 +10,7 @@ import {
 } from "@clerk/nextjs";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -36,6 +37,7 @@ export default function RootLayout({
           <link rel="icon" href="/logo.png" />
         </head>
         <body>
+          <Analytics />
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
