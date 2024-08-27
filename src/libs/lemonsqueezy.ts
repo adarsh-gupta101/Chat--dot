@@ -24,7 +24,7 @@ const configureLemonSqueezy = lemonSqueezySetup({
   },
 });
 
-export async function getCheckoutURL(variantId: number, embed = true) {
+export async function getCheckoutURL(variantId: number, embed = false) {
   if (!Number.isInteger(variantId) || variantId <= 0) {
     throw new Error("Invalid variantId. Must be a positive integer.");
   }
