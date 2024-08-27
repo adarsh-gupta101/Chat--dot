@@ -108,7 +108,7 @@ export function SidebarComponent() {
           />
           <SidebarLink
             link={{
-              label: `Credits: ${credits ?? 'Loading...'}`,
+              label: `Credits: ${credits}`,
               href: "/profile",
               icon:null
              
