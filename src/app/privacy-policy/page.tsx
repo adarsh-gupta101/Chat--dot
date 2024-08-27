@@ -1,4 +1,5 @@
 import { HeaderComponent } from "@/components/component/header-component";
+import FooterComponent from "@/components/ui/footer";
 import React from "react";
 
 function PrivacyPolicy() {
@@ -7,11 +8,13 @@ function PrivacyPolicy() {
       <HeaderComponent />
 
       <div className="flex justify-center items-center flex-col mt-16">
-        <div className="w-full py-6">
+        <div className="w-full py-6 "> {/* Add background color */}
           <div className="container px-4 md:px-6">
             <div className="flex flex-col space-y-2">
-              <h1 className="text-3xl font-bold">Privacy Policy</h1>
-              <p>
+              <h1 className="text-4xl font-bold text-center"> {/* Increase heading size and center align */}
+                Privacy Policy
+              </h1>
+              <p className="text-center"> {/* Center align last updated text */}
                 Last updated: March 14, 2024
                 <br />
                 <br />
@@ -21,7 +24,7 @@ function PrivacyPolicy() {
         </div>
         <div className="w-full py-6">
           <div className="container px-4 md:px-6">
-            <div className="prose prose-gray max-w-none dark:prose-invert">
+            <div className="prose prose-lg prose-gray max-w-none dark:prose-invert"> {/* Increase font size */}
               <h2>Interpretation and Definitions</h2>
               <p>
                 The words of which the initial letter is capitalized have
@@ -92,7 +95,7 @@ function PrivacyPolicy() {
                   with Us through the Service.
                 </li>
               </ul>
-              <h2>Retention of Your Personal Data</h2>
+              <h2 className="text-2xl font-bold mt-8">Retention of Your Personal Data</h2> {/* Add more spacing and increase heading size */}
               <p>
                 The Company will retain Your Personal Data only for as long as
                 is necessary for the purposes set out in this Privacy Policy. We
@@ -106,6 +109,7 @@ function PrivacyPolicy() {
           </div>
         </div>
       </div>
+      <FooterComponent/>
     </div>
   );
 }

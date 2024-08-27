@@ -16,7 +16,7 @@ export function HeaderComponent() {
   const { signOut } = useClerk();
 
   return (
-    <header className="flex items-center justify-between h-16 px-4 bg-background border-b md:px-6">
+    <header className="flex items-center justify-between h-16 px-4 bg-gray-50 dark:bg-gray-900 border-b md:px-6">
       <div className="flex items-center gap-4">
         <Link href="/" className="flex items-center gap-2" prefetch={false}>
           <Image alt="logo" src={logo} width={60} height={60} className="w-10 h-10"/>

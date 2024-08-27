@@ -11,6 +11,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { IconLayoutNavbarExpand } from "@tabler/icons-react";
 
 type Message = {
   role: "user" | "assistant";
@@ -101,19 +102,21 @@ function UIComponent() {
   };
 
   return (
-    <div className="w-full h-full">
-      <header className="text-black py-2 px-4 w-full flex items-center justify-end">
+    <div className="w-full h-full bg-gray-900 text-white">
+      <header className="py-2 px-4 w-full flex items-center justify-end">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2">
+            <Button variant="ghost" className="flex items-center gap-2 text-white">
               <span>{subModel.toUpperCase().replace(/-/g, " ")}</span>
+              <IconLayoutNavbarExpand className="text-white" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="bg-gray-800 border border-gray-700 rounded-md shadow-lg">
             {modelsAvailable.map((model) => (
               <DropdownMenuItem
                 key={model}
                 onSelect={() => setSubModel(model as typeof selectedModel)}
+                className="px-4 py-2 text-white hover:bg-gray-700"
               >
                 {model.replace(/_/g, " ")}
               </DropdownMenuItem>
@@ -123,6 +126,7 @@ function UIComponent() {
       </header>
       <Sandpack
         template="react"
+        theme="dark"
         options={{
           externalResources: [
             "https://unpkg.com/@tailwindcss/ui/dist/tailwind-ui.min.css",
@@ -131,7 +135,6 @@ function UIComponent() {
           editorHeight: "80vh",
           showTabs: true,
           showLineNumbers: true,
-          // showConsole:true
         }}
         customSetup={{
           dependencies: {
@@ -203,11 +206,11 @@ return(<div>Hi Amigo</div>)
               handleSubmit(e);
             }
           }}
-          className="flex-1  border border-gray-300 rounded-l-lg"
+          className="flex-1 bg-gray-800 text-white border border-gray-700 rounded-l-lg"
           placeholder="Type your message here..."
           disabled={loading}
         />
-        <Button onClick={handleSubmit} disabled={loading} className="ml-2">
+        <Button onClick={handleSubmit} disabled={loading} className="bg-blue-600 text-white ml-2">
           Send
         </Button>
       </footer>

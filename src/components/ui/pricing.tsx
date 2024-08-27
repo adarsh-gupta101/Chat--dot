@@ -9,11 +9,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  getCheckoutURL,
-  storeWebhookEvent,
-  syncPlans,
-} from "@/libs/lemonsqueezy";
 
 import {
   BadgePercent,
@@ -29,11 +24,11 @@ import { SignIn } from "@clerk/clerk-react";
 import { useUser, useSignIn, useClerk } from "@clerk/nextjs";
 import Script from "next/script";
 
-  declare global {
-          interface Window {
-            LemonSqueezy: any;
-          }
-        }
+declare global {
+  interface Window {
+    LemonSqueezy: any;
+  }
+}
 
 function Pricing() {
   useEffect(() => {
@@ -41,7 +36,6 @@ function Pricing() {
       (window as any).createLemonSqueezy?.();
     }
   }, []);
-  
 
   return (
     <div className="mt-6">
@@ -49,7 +43,6 @@ function Pricing() {
         src="https://assets.lemonsqueezy.com/lemon.js"
         defer
         strategy="lazyOnload"
-
         onLoad={() => {
           (window as any).createLemonSqueezy();
         }}
@@ -65,8 +58,8 @@ function Pricing() {
 
       <div className="flex md:flex-row flex-col justify-center mt-16">
         <PricingTable
-         
-          // product_id="price_1OJDxeSHBIS48Dl7JOmVMxhk"
+
+        // product_id="price_1OJDxeSHBIS48Dl7JOmVMxhk"
         />
 
         {/* <PricingTable /> */}
@@ -84,24 +77,22 @@ function PricingTable() {
   const clerk = useClerk();
   const formRef = React.useRef<HTMLFormElement>(null);
 
-
   const getCheckoutURL = async () => {
     try {
       const response = await fetch("/api/payments/lemonsqueezy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
-      
+
       if (!response.ok) {
-        throw new Error('Failed to get checkout URL');
+        throw new Error("Failed to get checkout URL");
       }
 
       console.log("Response:", response);
-      
-      const res= await response.json();
+
+      const res = await response.json();
 
       if (res) {
-      
         // window.open(res, '_blank');
         window.LemonSqueezy.Url.Open(res);
       }
@@ -110,10 +101,8 @@ function PricingTable() {
     }
   };
 
-
-
   return (
-    <Card className="  md:w-1/3 px-6 bg-gray-50 ring-1 ring-gray-50 rounded m-6">
+    <Card className="  md:w-1/3 px-6 bg-gray-50 dark:bg-gray-900 ring-1 ring-gray-50 rounded m-6">
       <CardHeader>
         <CardTitle>Premium</CardTitle>
         <CardDescription>
@@ -121,12 +110,14 @@ function PricingTable() {
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col items-start">
-        <p className="text-4xl font-bold text-gray-800 my-2">$9</p>
+        <p className="text-4xl font-bold text-gray-800 dark:text-gray-100 my-2">
+          $9
+        </p>
         <div className="flex items-center">
           <ul>
-          <li className="flex mt-2">
+            <li className="flex mt-2">
               <BadgePercent className="w-6 mr-2 text-green-500" />
-             1,00,000 Chat tokens{" "}
+              1,00,000 Chat tokens{" "}
             </li>
             <li className="flex mt-2">
               <BadgePercent className="w-6 mr-2 text-green-500" />
@@ -156,13 +147,13 @@ function PricingTable() {
         </SignedIn>
 
         <SignedOut>
-            <Button
-                className="mt-4 bg-gradient-to-r w-full from-pink-700 to-blue-700"
-                type="submit"
-            >
-                <JoystickIcon className="mr-2 h-4 w-4" />
-<SignInButton/>            </Button>
-
+          <Button
+            className="mt-4 bg-gradient-to-r w-full from-pink-700 to-blue-700"
+            type="submit"
+          >
+            <JoystickIcon className="mr-2 h-4 w-4" />
+            <SignInButton />{" "}
+          </Button>
         </SignedOut>
       </CardContent>
     </Card>

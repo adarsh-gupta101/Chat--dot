@@ -11,6 +11,7 @@ import { CardSpotlight } from "../ui/card-spotlight";
 import Pricing from "../ui/pricing";
 import { WobbleCard } from "../ui/wobble-card";
 import FooterComponent from "../ui/footer";
+import Link from "next/link";
 
 export default function HomeScreen() {
   return (
@@ -46,9 +47,11 @@ export default function HomeScreen() {
           that holds you back.{" "}
         </p>
 
-        <Button className="mt-6 mx-auto p-6 text-lg bg-green-400 dark:bg-yellow-300 text-black hover:bg-green-500 ring-1 ring-gray-400">
-          Click this Button🚀
-        </Button>
+          <Button className="mt-6 mx-auto p-6 text-lg bg-green-400 dark:bg-yellow-300 text-black hover:bg-green-500 ring-1 ring-gray-400">
+        <Link href="/pricing">
+            Buy Now🚀
+        </Link>
+          </Button>
       </div>
 
       <div className="flex justify-center items-center">
@@ -78,7 +81,7 @@ export default function HomeScreen() {
 
       <Pricing />
 
-      <FooterComponent/>
+      <FooterComponent />
     </div>
   );
 }
@@ -140,7 +143,7 @@ function WobbleCardDemo() {
           Chat Induvidually with Each Models.
         </h2>
         <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
-         Chat with each model individually with an Intutive UI.
+          Chat with each model individually with an Intutive UI.
         </p>
         {/* <Image
           src="/sc2.png"
@@ -153,10 +156,11 @@ function WobbleCardDemo() {
       <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-blue-900 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]">
         <div className="max-w-sm">
           <h2 className="max-w-sm md:max-w-lg  text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-           Create React Components on the fly (Beta)
+            Create React Components on the fly (Beta)
           </h2>
           <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
-            Just type the name of the component and what it does and boom... get the code for it.
+            Just type the name of the component and what it does and boom... get
+            the code for it.
           </p>
         </div>
         <Image

@@ -12,7 +12,7 @@ import { renderMessageContent } from "@/libs/utils/markdown-parser";
 import { useChatModel } from "@/libs/hooks/useChatModel";
 import { useSubModels } from "@/libs/hooks/useSubModels";
 import { useRouter } from "next/navigation";
-import { IconSend } from "@tabler/icons-react";
+import { IconLayoutNavbarExpand, IconSend } from "@tabler/icons-react";
 
 type Message = {
   role: "user" | "assistant";
@@ -85,19 +85,22 @@ function SingleChatComponent({ model }: { model: string }) {
   };
 
   return (
-    <div className="bg-gray-100 h-[100vh] w-screen p-2 shadow-xl  ">
-      <header className="text-black py-2 px-4 w-full flex items-center justify-start">
+    <div className="bg-gray-900 text-white h-[100vh] w-screen p-2 shadow-xl">
+      <header className="py-2 px-4 w-full flex items-center justify-start">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-2">
-              <span>{selectedModel.toUpperCase().replace(/_/g, " ")}</span>
+            <span>{selectedModel.toUpperCase().replace(/_/g, " ")}</span>
+
+             <IconLayoutNavbarExpand className="text-white" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="bg-white border border-gray-200 rounded-md shadow-lg">
             {submodels.map((model) => (
               <DropdownMenuItem
                 key={model}
                 onSelect={() => setSelectedModel(model as typeof selectedModel)}
+                className="px-4 py-2 text-gray-800 hover:bg-gray-100"
               >
                 {model.replace(/_/g, " ")}
               </DropdownMenuItem>
@@ -105,7 +108,7 @@ function SingleChatComponent({ model }: { model: string }) {
           </DropdownMenuContent>
         </DropdownMenu>
       </header>
-      <div className="flex-1 overflow-auto p-4 space-y-4 h-[80vh] bg-gray-100 self-stretch">
+      <div className="flex-1 overflow-auto p-4 space-y-4 h-[80vh] bg-gray-900 self-stretch">
         {messages.map((message, index) => (
           <div
             key={index}
@@ -116,8 +119,8 @@ function SingleChatComponent({ model }: { model: string }) {
             <div
               className={`${
                 message.role === "user"
-                  ? "bg-blue-300 text-white max-w-[70%]"
-                  : "bg-gray-200 text-black max-w-[70%]"
+                  ? "bg-blue-600 text-white max-w-[70%]"
+                  : "bg-gray-800 text-white max-w-[70%]"
               } rounded-lg p-1 px-6 `}
             >
               {renderMessageContent(message.content)}
@@ -126,7 +129,7 @@ function SingleChatComponent({ model }: { model: string }) {
         ))}
         {isStreaming && (
           <div className="flex justify-start">
-            <div className="bg-gray-200 text-black rounded-lg p-2 max-w-lg">
+            <div className="bg-gray-800 text-white rounded-lg p-2 max-w-lg">
               {renderMessageContent(streamedMessage)}
             </div>
           </div>

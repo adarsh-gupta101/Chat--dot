@@ -123,17 +123,31 @@ export function ChatComponent({
     [inputMessage, isLoading, sendMessage, messages]
   );
 
+  function MessageBubble({ message }: { message: Message }) {
+    return (
+      <div
+        className={`${
+          message.role === "user"
+            ? "bg-blue-400 dark:bg-blue-600 text-white"
+            : "bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+        } rounded-lg p-1 px-6 max-w-lg`}
+      >
+        {renderMessageContent(message.content)}
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col justify-between w-full h-full max-h-[70vh] border-2 border-gray-200 shadow rounded-lg bg-gray-100">
+    <div className="flex flex-col justify-between w-full h-full max-h-[70vh] border-2 border-gray-200 dark:border-gray-700 shadow rounded-lg bg-gray-100 dark:bg-gray-800">
       {/* Header with Model Selection */}
-      <header className="text-black py-2 px-4 w-full flex items-center justify-end">
+      <header className="text-black dark:text-white py-2 px-4 w-full flex items-center justify-end">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-2">
               <span>{selectedModel.toUpperCase().replace(/-/g, " ")}</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="dark:bg-gray-700">
             {MODEL_OPTIONS.map((model) => (
               <DropdownMenuItem key={model} onSelect={() => setSelectedModel(model)}>
                 {model.replace(/-/g, " ")}
@@ -147,18 +161,12 @@ export function ChatComponent({
       <div className="overflow-y-scroll p-4 h-[80%]">
         {messages.map((message, index) => (
           <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-            <div
-              className={`${
-                message.role === "user" ? "bg-blue-400 text-white" : "bg-gray-200 text-black"
-              } rounded-lg p-1 px-6 max-w-lg`}
-            >
-              {renderMessageContent(message.content)}
-            </div>
+            <MessageBubble message={message} />
           </div>
         ))}
         {isStreaming && (
           <div className="flex justify-start">
-            <div className="bg-gray-200 text-black rounded-lg p-2 md:max-w-xl">
+            <div className="bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-lg p-2 md:max-w-xl">
               {renderMessageContent(streamedMessage)}
             </div>
           </div>
@@ -177,11 +185,11 @@ export function ChatComponent({
               handleSubmit();
             }
           }}
-          className="flex-1 border border-gray-300 rounded-l-lg"
+          className="flex-1 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-l-lg"
           placeholder="Type your message here..."
           disabled={isLoading}
         />
-        <Button onClick={() => handleSubmit()} disabled={isLoading} className="bg-gray-600 text-white mx-2">
+        <Button onClick={() => handleSubmit()} disabled={isLoading} className="bg-gray-600 dark:bg-gray-500 text-white mx-2">
           <IconSend />
         </Button>
       </footer>
