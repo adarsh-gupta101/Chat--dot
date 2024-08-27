@@ -277,6 +277,7 @@ export async function processWebhookEvent(webhookEvent: any) {
 
   //if single order item
   if (webhookEvent[0].event_name.startsWith("order_created")) {
+    console.log("order_created");
     const attributes = eventBody.data.attributes;
     const variantId = attributes.first_order_item.variant_id;
 
