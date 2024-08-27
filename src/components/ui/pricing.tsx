@@ -102,7 +102,7 @@ function PricingTable() {
         console.error("LemonSqueezy or LemonSqueezy.Url is not available");
         // Handle the case when LemonSqueezy or LemonSqueezy.Url is not available
         // For example, you can open the URL in a new tab as a fallback
-        window.open(res, '_blank');
+        window.open(res, '_self');
       }
     } catch (error) {
       console.error("Error getting checkout URL:", error);
@@ -113,6 +113,15 @@ function PricingTable() {
 
   return (
     <Card className="  md:w-1/3 px-6 bg-gray-50 dark:bg-gray-900 ring-1 ring-gray-50 rounded m-6">
+     
+     <Script
+        src="https://assets.lemonsqueezy.com/lemon.js"
+        defer
+        strategy="lazyOnload"
+        onLoad={() => {
+          (window as any).createLemonSqueezy();
+        }}
+      ></Script>
       <CardHeader>
         <CardTitle>Premium</CardTitle>
         <CardDescription>
