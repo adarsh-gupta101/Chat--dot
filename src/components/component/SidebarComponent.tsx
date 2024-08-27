@@ -25,7 +25,7 @@ export function SidebarComponent() {
   // fetch credits remaining
 
   useEffect(()=>{
-    let creditsFetch = fetch("/api/user/", {
+   fetch("/api/user/", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
@@ -108,7 +108,7 @@ export function SidebarComponent() {
           />
           <SidebarLink
             link={{
-              label: `Credits: ${credits}`,
+              label: `Credits: ${credits ?? 'Loading...'}`,
               href: "/profile",
               icon:null
              
