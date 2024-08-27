@@ -1,4 +1,4 @@
-import type { Metadata ,Viewport} from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import {
@@ -17,13 +17,9 @@ const inter = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "The Web Dev Starter Pack",
-  description: "The Ultimate Web Developer Wholesome Package ",
-
+  title: "Chat-dot",
+  description: "Chat with All AI Apps under one roof",
 };
-
-
-
 
 export default function RootLayout({
   children,
@@ -39,8 +35,6 @@ export default function RootLayout({
             defaultTheme="dark"
             enableSystem={true}
             disableTransitionOnChange
-            
-
           >
             {children}
           </ThemeProvider>{" "}

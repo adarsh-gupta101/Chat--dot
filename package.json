@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gp":"git add . && git commit -m 'changes' && git push"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^0.0.40",
