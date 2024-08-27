@@ -62,7 +62,7 @@ export async function getCheckoutURL(variantId: number, embed = false) {
         enabledVariants: [variantId],
         redirectUrl: `${
           process.env.NODE_ENV === "production"
-            ? "https://chat.adarsh-gupta.in/dashboard"
+            ? "https://chat.adarsh-gupta.in/"
             : process.env.NEXT_PUBLIC_APP_URL
         }/dashboard/`,
         receiptButtonText: "Go to Dashboard",

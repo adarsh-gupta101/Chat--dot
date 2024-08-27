@@ -4,7 +4,6 @@ import { useUser } from "@clerk/nextjs";
 import Script from "next/script";
 import HomeScreen from "@/components/component/HomeScreen";
 import Loading from "./loading";
-import { getCheckoutURL } from "@/libs/lemonsqueezy";
 
 export default function Home() {
   const user = useUser();
@@ -15,10 +14,7 @@ export default function Home() {
     }
   }, []);
 
-  async function getCheckoutURL_So_that_Users_Can_Buy() {
-    const checkoutUrl = await getCheckoutURL(472559, true);
-    (window as any).LemonSqueezy.Url.Open(checkoutUrl);
-  }
+ 
 
   return (
     <main className="w-full">
