@@ -98,6 +98,8 @@ export function HeaderComponent() {
               <LayoutGridIcon className="w-4 h-4" />
               Dashboard
             </Link>
+            <SignedOut>
+
             <Link
               href="/login"
               className="flex items-center gap-2 px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
@@ -106,6 +108,10 @@ export function HeaderComponent() {
               <UserIcon className="w-4 h-4" />
               Login
             </Link>
+            </SignedOut>
+            <SignedIn>
+              <UserIcon className="w-4 h-4" />
+            </SignedIn>
 
             <ModeToggle/>
           </nav>
