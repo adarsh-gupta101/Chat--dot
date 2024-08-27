@@ -26,6 +26,10 @@ export const useUIBuildModel = ( model:string,submodel: string) => {
         });
         // console.log({response})
         if (!response.ok) {
+          if (response.status === 402) {
+            // Redirect to the pricing page
+            window.location.href = "/pricing";
+          }
           throw new Error("API response was not ok");
         }
 

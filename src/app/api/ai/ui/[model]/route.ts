@@ -42,7 +42,7 @@ export async function POST(
   const creditsRemaining = await getUserCredits(user.id);
   
   if (creditsRemaining.credits < 100) {
-    return NextResponse.json({ error: "Insufficient credits" }, { status: 400 });
+    return NextResponse.json({ error: "Insufficient credits" }, { status: 402 });
   }
 
   if (!VALID_MODELS.includes(params.model as ValidModel)) {

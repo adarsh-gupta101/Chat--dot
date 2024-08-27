@@ -72,15 +72,14 @@ function UIComponent() {
       // setMessages((prev) => [...prev, userMessage]);
       setInput("");
 
-      console.log(messages);
 
       try {
         await sendMessage(userMessage.content, (chunk) => {
           fullStreamedMessage += chunk;
           setStreamedMessage(fullStreamedMessage);
-          console.log("chunk", chunk);
+          // console.log("chunk", chunk);
         },);
-        console.log("fullStreamedMessage", fullStreamedMessage);
+        // console.log("fullStreamedMessage", fullStreamedMessage);
         setMessages((prev) => [
           { content: fullStreamedMessage, role: "assistant" },
         ]);
