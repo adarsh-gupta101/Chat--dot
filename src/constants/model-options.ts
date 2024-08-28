@@ -6,8 +6,8 @@ export const MODEL_OPTIONS = [
   "gpt-3.5-turbo",
   "gpt-4omini",
   "gpt-4o",
-  "llama-3.1-70b",
-  "llama-3.1-405b",
+//   "llama-3.1-70b",
+//   "llama-3.1-405b",
   "gemini-1.5-flash",
   "gemini-1.5-pro",
 ] as const;
