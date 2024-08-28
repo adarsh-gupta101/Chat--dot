@@ -84,7 +84,7 @@ function SingleChatComponent({ model }: { model: string }) {
       }
     }
   };
-
+ 
   return (
     <div className="dark:bg-gray-900 bg-gray-100 dark:text-white text-gray-800 h-[100vh] w-screen p-2 shadow-xl">
       <header className="py-2 px-4 w-full flex items-center justify-end">

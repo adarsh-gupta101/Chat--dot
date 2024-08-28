@@ -12,6 +12,7 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { IconLayoutNavbarExpand } from "@tabler/icons-react";
+import { ModeToggle } from "../theme-toggle";
 
 type Message = {
   role: "user" | "assistant";
@@ -101,11 +102,11 @@ function UIComponent() {
   };
 
   return (
-    <div className="w-full h-full bg-gray-900 text-white">
+    <div className="w-full h-full bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white">
       <header className="py-2 px-4 w-full flex items-center justify-end">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2 text-white">
+            <Button variant="ghost" className="flex items-center gap-2 text-gray-800 dark:text-white">
               <span>{subModel.toUpperCase().replace(/-/g, " ")}</span>
               <IconLayoutNavbarExpand className="text-white" />
             </Button>
@@ -122,6 +123,7 @@ function UIComponent() {
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
+        <ModeToggle/>
       </header>
       <Sandpack
         template="react"
@@ -203,9 +205,9 @@ return(<div>Hi Amigo</div>)
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               handleSubmit(e);
-            }
+            } 
           }}
-          className="flex-1 bg-gray-800 text-white border border-gray-700 rounded-l-lg"
+          className="flex-1 border border-gray-300 dark:border-gray-700 rounded-l-lg dark:bg-gray-800 dark:text-white"
           placeholder="Type your message here..."
           disabled={loading}
         />
