@@ -112,61 +112,43 @@ function PricingTable() {
   };
 
   return (
-    <Card className="  md:w-1/3 px-6 bg-gray-50 dark:bg-gray-900 ring-1 ring-gray-50 rounded m-6">
-     
-     <Script
-        src="https://assets.lemonsqueezy.com/lemon.js"
-        defer
-        strategy="lazyOnload"
-        onLoad={() => {
-          (window as any).createLemonSqueezy();
-        }}
-      ></Script>
-      <CardHeader>
-        <CardTitle>Premium</CardTitle>
-        <CardDescription>
-          All essential features to get started with your app
+    <Card className="md:w-96 px-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 ring-1 ring-gray-200 dark:ring-gray-700 rounded-lg shadow-lg m-6 transform hover:scale-105 transition-transform duration-300">
+      <CardHeader className="text-center">
+        <CardTitle className="text-3xl font-bold text-gray-800 dark:text-gray-100">Premium</CardTitle>
+        <CardDescription className="text-gray-600 dark:text-gray-300">
+          All essential features to supercharge your app
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col items-start">
-        <p className="text-4xl font-bold text-gray-800 dark:text-gray-100 my-2">
-          $9
+      <CardContent className="flex flex-col items-center">
+        <p className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-800 to-blue-600 my-4">
+          $8
         </p>
-        <div className="flex items-center">
-          <ul>
-            <li className="flex mt-2">
-              <BadgePercent className="w-6 mr-2 text-green-500" />
-              1,00,000 Chat tokens{" "}
-            </li>
-            <li className="flex mt-2">
-              <BadgePercent className="w-6 mr-2 text-green-500" />
-              Chat With 9+ AI tools
-            </li>
-
-            <li className="flex mt-2">
-              <BadgePercent className="w-6 mr-2 text-green-500" /> Create UI
-            </li>
-
-            <li className="flex mt-2">
-              <BadgePercent className="w-6 mr-2 text-green-500" />
-              Pay-as-u-Use Model{" "}
-            </li>
-          </ul>
-        </div>
+        <ul className="space-y-3 text-gray-700 dark:text-gray-200">
+          <PricingFeature icon={BadgePercent} text="1,00,000 Chat tokens" />
+          <PricingFeature icon={BadgePercent} text="Chat With 9+ AI tools" />
+          <PricingFeature icon={BadgePercent} text="Create UI" />
+          <PricingFeature icon={BadgePercent} text="Pay-as-you-Use Model" />
+        </ul>
 
         <SignedIn>
           <Button
-            className="mt-4 bg-gradient-to-r w-full from-pink-700 to-blue-700"
+            className="mt-8 w-full bg-gradient-to-r from-pink-600 to-blue-600 hover:from-pink-700 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-md transform hover:scale-105 transition-all duration-300"
             type="submit"
             onClick={() => getCheckoutURL()}
-            disabled={isLoading} // Disable the button while loading
+            disabled={isLoading}
           >
             {isLoading ? (
-              <span>Loading...</span>
+              <span className="flex items-center justify-center">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+              </span>
             ) : (
               <>
-                <JoystickIcon className="mr-2 h-4 w-4" />
-                Buy Now✨
+                <JoystickIcon className="mr-2 h-5 w-5" />
+                Upgrade Now ✨
               </>
             )}
           </Button>
@@ -174,14 +156,23 @@ function PricingTable() {
 
         <SignedOut>
           <Button
-            className="mt-4 bg-gradient-to-r w-full from-pink-700 to-blue-700"
+            className="mt-8 w-full bg-gradient-to-r from-pink-600 to-blue-600 hover:from-pink-700 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-md transform hover:scale-105 transition-all duration-300"
             type="submit"
           >
-            <JoystickIcon className="mr-2 h-4 w-4" />
-            <SignInButton />{" "}
+            <JoystickIcon className="mr-2 h-5 w-5" />
+            <SignInButton />
           </Button>
         </SignedOut>
       </CardContent>
     </Card>
+  );
+}
+
+function PricingFeature({ icon: Icon, text }: { icon: any; text: string }) {
+  return (
+    <li className="flex items-center space-x-3">
+      <Icon className="w-5 h-5 text-green-500" />
+      <span>{text}</span>
+    </li>
   );
 }

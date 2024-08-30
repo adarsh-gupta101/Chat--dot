@@ -15,10 +15,11 @@ import Link from "next/link";
 
 export default function HomeScreen() {
   return (
-    <div className="flex flex-col justify-center  w-full">
-      <HeaderComponent></HeaderComponent>
+    <div className="flex flex-col justify-center w-full">
+      <HeaderComponent />
 
-      <div className="flex flex-col m-4 md:m-16 min-h-96 justify-center my-16 md:my-32 text-balance">
+      {/* Hero Section */}
+      <div className="flex flex-col m-4 md:m-16 min-h-screen justify-center my-8 md:my-8 text-balance">
         <HeroHighlight>
           <motion.h1
             initial={{
@@ -33,49 +34,88 @@ export default function HomeScreen() {
               duration: 0.5,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="text-2xl px-4 md:text-4xl lg:text-6xl font-bold max-w-4xl leading-snug md:leading-normal lg:leading-snug text-center mx-auto"
+            className="text-3xl px-4 md:text-5xl lg:text-7xl font-bold max-w-5xl leading-tight md:leading-tight lg:leading-tight text-center mx-auto"
           >
-            Save 80% on AI Bills <br />
-            <Highlight className="block text-black p-1">
-              While Accessing Everything{" "}
+            Unlock AI&apos;s Full Potential <br />
+            <Highlight className="block text-black p-2 mt-2">
+              At 80% Less Cost
             </Highlight>
           </motion.h1>
         </HeroHighlight>
 
-        <p className="text-center text-gray-500 dark:text-gray-300 text-base md:text-xl mt-4 md:mt-6">
-          Now one can live without AI now but price shouldn&apos;t be something
-          that holds you back.{" "}
-        </p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="text-center text-gray-600 dark:text-gray-300 text-lg md:text-xl mt-6 md:mt-8 max-w-2xl mx-auto"
+        >
+          Access cutting-edge AI models without breaking the bank. Our platform
+          brings you the power of ChatGPT, Claude, and more at a fraction of the
+          cost.
+        </motion.p>
 
-        <Button className="mt-6 mx-auto px-4 py-3 md:px-6 md:py-4 text-base md:text-lg bg-green-400 dark:bg-yellow-300 text-black hover:bg-green-500 ring-1 ring-gray-400">
-          <Link href="/pricing">
-            Buy Now🚀
-          </Link>
-        </Button>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center mt-8 md:mt-12"
+        >
+          <Button className="px-6 py-3 text-lg bg-green-500 dark:bg-yellow-400 text-white dark:text-black hover:bg-green-600 dark:hover:bg-yellow-500 ring-2 ring-green-600 dark:ring-yellow-500">
+            <Link href="/pricing">Start Saving Now 🚀</Link>
+          </Button>
+          <Button variant="outline" className="px-6 py-3 text-lg">
+            <Link href="/dashboard">Try Now</Link>
+          </Button>
+        </motion.div>
       </div>
 
-      <div className="flex justify-center items-center">
-        <CardSpotlight className="h-2/4 w-5/6 md:w-1/3">
-          <p className="text-2xl font-bold relative z-20 mt-2 text-white">
-            Way to AI debt
-          </p>
-          <div className="text-neutral-200 mt-4 relative z-20">
-            ❌❌❌{" "}
-            <ul className="list-none  mt-2">
-              <Step title="ChatGPT ~ $20 + taxes" />
-              <Step title="Claude ~ $20 + taxes" />
-              <Step title="Image generation ~ $20" />
-              <Step title="Voice generation ~ 20" />
-            </ul>
-          </div>
-          <p className="text-neutral-300 mt-4 relative z-20 text-sm">
-            Total: $100 + taxes... Why paying this much?
-          </p>
-        </CardSpotlight>
+      {/* Cost Comparison Section */}
+      <div
+        className="flex justify-center items-center my-16 md:my-32"
+        id="features"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto w-full px-4">
+          <CardSpotlight className="h-full w-full">
+            <h2 className="text-2xl font-bold relative z-20 mt-2 text-white">
+              The AI Debt Trap
+            </h2>
+            <div className="text-neutral-200 mt-4 relative z-20">
+              <ul className="list-none mt-2 space-y-2">
+                <Step title="ChatGPT ~ $20 + taxes" />
+                <Step title="Claude ~ $20 + taxes" />
+                <Step title="Image generation ~ $20" />
+                <Step title="Voice generation ~ $20" />
+              </ul>
+            </div>
+            <p className="text-neutral-300 mt-4 relative z-20 text-lg font-semibold">
+              Total: $80+ per month... Is it worth it?
+            </p>
+          </CardSpotlight>
+
+          <CardSpotlight className="h-full w-full bg-green-700">
+            <h2 className="text-2xl font-bold relative z-20 mt-2 text-white">
+              Our Solution
+            </h2>
+            <div className="text-neutral-200 mt-4 relative z-20">
+              <ul className="list-none mt-2 space-y-2">
+                <Step title="All AI models in one place" />
+                <Step title="Fraction of the cost" />
+                <Step title="No feature limitations" />
+                <Step title="Seamless integration" />
+              </ul>
+            </div>
+            <p className="text-neutral-300 mt-4 relative z-20 text-lg font-semibold">
+              Save up to 80% on your AI expenses!
+            </p>
+          </CardSpotlight>
+        </div>
       </div>
 
-      <div className="flex-col items-center justify-center min-h-72 m-2 md:m-16">
-        <p className="m-6 text-center">Instead just use this... ↓</p>
+      {/* Feature Showcase */}
+      <div className="flex-col items-center justify-center min-h-screen m-2 md:m-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          Powerful Features at Your Fingertips
+        </h2>
         <WobbleCardDemo />
       </div>
 
