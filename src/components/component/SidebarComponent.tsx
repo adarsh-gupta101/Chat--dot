@@ -10,6 +10,7 @@ import {
   IconBrandOpenai,
   IconAi,
   IconDashboard,
+  IconImageInPicture,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -73,6 +74,13 @@ export function SidebarComponent() {
       href: "/ui",
       icon: (
         <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      ),
+    },
+    {
+      label: "Image Generation",
+      href: "/image",
+      icon: (
+        <IconImageInPicture className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
   ];

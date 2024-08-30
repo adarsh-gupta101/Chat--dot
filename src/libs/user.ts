@@ -67,3 +67,36 @@ export async function deductCredit(user_id: string, amount: number) {
 
   return { success: true, message: "Credit used successfully" };
 }
+
+
+export async function addUserGeneratedImages(url:string, user_id:string) {
+  const { data, error } = await supabase
+    .from("user_images")
+    .insert({
+      user_id,
+      image_url: url,
+      created_at: new Date().toISOString(),
+    });
+    
+    if (error) {
+      console.error("Error adding user generated image:", error);
+      throw error;
+    }
+    
+    return data;
+}
+
+
+export async function getUserGeneratedImages(user_id: string) {
+  const { data, error } = await supabase
+    .from("user_images")
+    .select("image_url")
+    .eq("user_id", user_id);
+    
+    if (error) {
+      console.error("Error getting user generated images:", error);
+      throw error;
+    }
+    
+    return data;
+}
