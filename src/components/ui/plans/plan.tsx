@@ -82,6 +82,7 @@ export function InfoMessage() {
     <Alert className="not-prose mt-2">
       Follow{" "}
       <a
+        rel="noopener noreferrer"
         href="https://docs.lemonsqueezy.com/guides/developer-guide/testing-going-live#testing-the-checkout"
         target="_blank"
         className="text-gray-900 underline hover:text-primary"

@@ -21,8 +21,8 @@ function page() {
 export default page;
 
 function ImageHistory() {
-  const [images, setImages] = useState<string[]>([]);
-  useEffect(() => {
+    const [images, setImages] = useState<{ image_url: string }[]>([]);
+    useEffect(() => {
     const fetchImages = async () => {
       const res = await fetch("/api/ai/image/history");
       const data = await res.json();
@@ -43,7 +43,7 @@ function ImageHistory() {
           />
           <a
             href={image?.image_url}
-            download
+            download={`generated-image-${index}.jpg`}
             className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 text-white opacity-0 hover:opacity-100 transition-opacity duration-200"
           >
             Download
