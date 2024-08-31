@@ -69,6 +69,15 @@ export default function HomeScreen() {
         </motion.div>
       </div>
 
+      {/* product video */}
+      <div className="flex justify-center items-center my-8 md:my-8">
+        {/* <video src="/video.mp4" autoPlay loop muted controls className="w-3/4 max-w-7xl rounded-lg shadow-lg" /> */}
+        <video  autoPlay loop muted controls className="w-3/4 max-w-7xl rounded-lg shadow-lg" >
+            <source src="/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+      </div>
+
       {/* Cost Comparison Section */}
       <div
         className="flex justify-center items-center my-16 md:my-32"

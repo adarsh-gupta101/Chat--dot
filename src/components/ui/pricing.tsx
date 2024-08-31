@@ -23,6 +23,7 @@ import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import { SignIn } from "@clerk/clerk-react";
 import { useUser, useSignIn, useClerk } from "@clerk/nextjs";
 import Script from "next/script";
+import { IconDisabled } from "@tabler/icons-react";
 
 declare global {
   interface Window {
@@ -126,8 +127,11 @@ function PricingTable() {
         <ul className="space-y-3 text-gray-700 dark:text-gray-200">
           <PricingFeature icon={BadgePercent} text="1,00,000 Chat tokens" />
           <PricingFeature icon={BadgePercent} text="Chat With 9+ AI tools" />
-          <PricingFeature icon={BadgePercent} text="Create UI" />
+          <PricingFeature icon={BadgePercent} text="Create Realistic Images" />
+          <PricingFeature icon={BadgePercent} text="Create React Components" />
           <PricingFeature icon={BadgePercent} text="Pay-as-you-Use Model" />
+          {/* upcomign features */}
+          {/* <PricingFeature icon={IconDisabled} text="Create Custom AI Agents" /> */}
         </ul>
 
         <SignedIn>
@@ -148,7 +152,7 @@ function PricingTable() {
             ) : (
               <>
                 <JoystickIcon className="mr-2 h-5 w-5" />
-                Upgrade Now ✨
+                Upgrade Now ✨ 
               </>
             )}
           </Button>

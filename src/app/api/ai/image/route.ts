@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     }
 
     const { credits, success } = await getUserCredits(user.id);
-    if (!success || credits < 201) {
+    if (!success || credits < 5000) {
       return NextResponse.json(
         { error: "Insufficient credits" },
         { status: 402 }
