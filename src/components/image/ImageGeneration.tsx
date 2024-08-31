@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { useImageGeneration } from "@/libs/hooks/useImageGeneration";
 import { Loader2, Send } from "lucide-react";
 import Image from "next/image";
+import { ModeToggle } from "../theme-toggle";
 
 export function ImageGeneration() {
   const [prompt, setPrompt] = useState("");
@@ -22,8 +23,9 @@ export function ImageGeneration() {
   };
 
   return (
-    <div className="flex flex-col h-[100vh] w-full">
-      <div className="flex-1 overflow-auto p-4 space-y-4">
+    <div className="dark:bg-gray-900 bg-gray-100 dark:text-white text-gray-800 h-[80vh]  p-2 shadow-xl flex flex-col">
+      
+      <div className="flex-1 overflow-auto p-4 space-y-4 bg-gray-100 dark:bg-gray-800 self-stretch">
         {imageUrl && (
           <div className="flex justify-center">
             <Image src={imageUrl} alt="Generated image" className="rounded-lg shadow-lg" width={512} height={512} />
