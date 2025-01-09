@@ -44,11 +44,11 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <div className=" py-12 h-[10/12] flex flex-col justify-center items-center">
+    <div className=" py-12 h-[10/12] flex flex-col justify-center items-center bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-extrabold text-gray-800 dark:text-gray-200 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-gray-800 dark:text-gray-800 sm:text-4xl">
             Powerful Features at Your Fingertips
           </h2>
           <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
@@ -61,10 +61,10 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ${feature.bgColor} shadow-xl`}
+              className={`p-6 rounded-lg hover:shadow transition duration-300 border border-gray-300 shadow-lg 	`}
             >
               <div
-                className={`text-2xl w-12 h-12 flex items-center bg-white justify-center rounded-full bg-opacity-60 dark:text-white`}
+                className={`text-2xl w-12 h-12 flex items-center ${feature.bgColor} justify-center rounded-full bg-opacity-80 dark:text-white`}
               >
                 {feature.icon}
               </div>

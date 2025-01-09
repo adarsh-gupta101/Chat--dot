@@ -13,6 +13,8 @@ import { WobbleCard } from "../ui/wobble-card";
 import FooterComponent from "../ui/footer";
 import Link from "next/link";
 import FeatureCards from "./featureCards";
+import PricingFeatures from "../ui/pricing-features";
+import DemoUI from "./DemoUI";
 
 export default function HomeScreen() {
   return (
@@ -39,7 +41,7 @@ export default function HomeScreen() {
             className="text-3xl px-4 md:text-5xl lg:text-7xl font-bold max-w-5xl leading-tight md:leading-tight lg:leading-tight text-center mx-auto"
           >
             Unlock AI&apos;s Full Potential <br />
-            <Highlight className="block text-black p-2 mt-2">
+            <Highlight className="block text-black pd-1 md:p-2 mt-6 md:mt-4">
               At 80% Less Cost
             </Highlight>
           </motion.h1>
@@ -134,15 +136,19 @@ export default function HomeScreen() {
         </div>
       </div>
 
+      <DemoUI/>
+
       {/* Feature Showcase */}
       <div className="flex-col items-center justify-center min-h-screen m-2 md:m-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          Powerful Features at Your Fingertips
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 mt-16">
+        Why Waiting? Get Started Now!
         </h2>
         <WobbleCardDemo />
       </div>
 
       <Pricing />
+
+      <PricingFeatures/>
 
       <FooterComponent />
     </div>
