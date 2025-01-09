@@ -12,6 +12,7 @@ import Pricing from "../ui/pricing";
 import { WobbleCard } from "../ui/wobble-card";
 import FooterComponent from "../ui/footer";
 import Link from "next/link";
+import FeatureCards from "./featureCards";
 
 export default function HomeScreen() {
   return (
@@ -19,7 +20,8 @@ export default function HomeScreen() {
       <HeaderComponent />
 
       {/* Hero Section */}
-      <div className="flex flex-col m-4 md:m-16 min-h-screen justify-center my-8 md:my-8 text-balance">
+
+      <div className="flex flex-col m-4 md:m-16 min-h-full md:min-h-[80vh] justify-center my-8 md:my-8 text-balance">
         <HeroHighlight>
           <motion.h1
             initial={{
@@ -69,12 +71,24 @@ export default function HomeScreen() {
         </motion.div>
       </div>
 
+      {/* feature cards */}
+
+      <FeatureCards/>
+
+    
+
       {/* product video */}
       <div className="flex justify-center items-center my-8 md:my-8">
         {/* <video src="/video.mp4" autoPlay loop muted controls className="w-3/4 max-w-7xl rounded-lg shadow-lg" /> */}
-        <video  autoPlay loop muted controls className="w-3/4 max-w-7xl rounded-lg shadow-lg" >
-            <source src="/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
+        <video
+          autoPlay
+          loop
+          muted
+          controls
+          className="w-3/4 max-w-7xl rounded-lg shadow-lg"
+        >
+          <source src="/video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
       </div>
 
