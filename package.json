@@ -53,6 +53,7 @@
     "remark-gfm": "^4.0.0",
     "resend": "^3.5.0",
     "sonner": "^1.5.0",
+    "supabase": "^2.9.6",
     "svix": "^1.25.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
@@ -71,4 +72,3 @@
     "typescript": "^5"
   }
 }
- 

@@ -124,13 +124,13 @@ export default function HomeScreen() {
             <div className="text-neutral-200 mt-4 relative z-20">
               <ul className="list-none mt-2 space-y-2">
                 <Step title="All AI models in one place" />
-                <Step title="Fraction of the cost" />
+                <Step title="FREE of the cost" />
                 <Step title="No feature limitations" />
                 <Step title="Seamless integration" />
               </ul>
             </div>
             <p className="text-neutral-300 mt-4 relative z-20 text-lg font-semibold">
-              Save up to 80% on your AI expenses!
+              Save 100% on your AI expenses!
             </p>
           </CardSpotlight>
         </div>
@@ -146,7 +146,7 @@ export default function HomeScreen() {
         <WobbleCardDemo />
       </div>
 
-      <Pricing />
+      {/* <Pricing /> */}
 
       <PricingFeatures/>
 
