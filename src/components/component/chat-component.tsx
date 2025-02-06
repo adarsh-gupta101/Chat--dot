@@ -9,12 +9,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useAuth } from "@clerk/nextjs";
+import { useAuth,useUser } from "@clerk/nextjs";
 import { renderMessageContent } from "@/libs/utils/markdown-parser";
 import { useChatModel } from "@/libs/hooks/useChatModel";
 import { useRouter } from "next/navigation";
 import { IconSend } from "@tabler/icons-react";
 import { MODEL_OPTIONS } from "@/constants/model-options";
+// import { storeChatMessage, type ChatMessage } from "@/libs/user";
 
 type Message = {
   role: "user" | "assistant";
@@ -27,6 +28,24 @@ interface ChatComponentProps {
   sendMessagetoAll: string;
   resetSendMessagetoAll: () => void;
   index: number;
+}
+
+async function storeChatMessage(message: string, role: 'user' | 'assistant', conversationId?: string) {
+  const response = await fetch(`/api/ai/chat`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message,
+      role,
+      conversationId
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to store chat message');
+  }
 }
 
 export function ChatComponent({
@@ -43,11 +62,15 @@ export function ChatComponent({
   const [streamedMessage, setStreamedMessage] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [provider, setProvider] = useState("claude");
+  const [conversationId] = useState(() => crypto.randomUUID());
+
 
   const { sendMessage, isLoading, error } = useChatModel(provider, selectedModel);
   const router = useRouter();
 
+  const { user } = useUser();
 
+  console.log(user)
 
   // Handle syncing messages across all chat components
   useEffect(() => {
@@ -57,6 +80,21 @@ export function ChatComponent({
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ isSyncChat, resetSendMessagetoAll, sendMessagetoAll]);
+
+  //  // Load chat history on mount
+  useEffect(() => {
+    async function loadChatHistory() {
+      const response = await fetch(`/api/chat?conversationId=${conversationId}`);
+      if (response.ok) {
+        const history = await response.json();
+        setMessages(history.map((msg: any) => ({
+          role: msg.role,
+          content: msg.message
+        })));
+      }
+    }
+    loadChatHistory();
+  }, [conversationId]);
 
   // Update provider based on selected model
   useEffect(() => {
@@ -81,6 +119,12 @@ export function ChatComponent({
         setInputMessage("");
 
         try {
+
+          await storeChatMessage(
+           userMessage.content,
+            'user',
+            conversationId
+          );
           let fullStreamedMessage = "";
           await sendMessage(
             userMessage.content,
@@ -89,6 +133,12 @@ export function ChatComponent({
               setStreamedMessage(fullStreamedMessage);
             },
             messages.slice(-2)
+          );
+
+          await storeChatMessage(
+            fullStreamedMessage,
+            'assistant',
+            conversationId
           );
           setMessages((prev) => [
             ...prev,

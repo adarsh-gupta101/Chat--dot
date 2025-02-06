@@ -100,3 +100,57 @@ export async function getUserGeneratedImages(user_id: string) {
     
     return data;
 }
+
+export type ChatMessage = {
+  id: string
+  user_id: string
+  message: string
+  role: 'user' | 'assistant'
+  created_at: string
+  conversation_id: string
+}
+
+export async function storeChatMessage({
+  userId,
+  message,
+  role,
+  conversationId
+}: {
+  userId: string;
+  message: string;
+  role: 'user' | 'assistant';
+  conversationId?: string;
+}) {
+  const { error } = await supabase
+    .from('chat_history')
+    .insert({
+      user_id: userId,
+      message,
+      role,
+      conversation_id: conversationId
+    });
+
+  if (error) throw error;
+}
+
+export async function getChatHistory(userId: string) {
+  const { data, error } = await supabase
+    .from('chat_history')
+    .select('*')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return data as ChatMessage[];
+}
+
+export async function getConversation(conversationId: string) {
+  const { data, error } = await supabase
+    .from('chat_history')
+    .select('*')
+    .eq('conversation_id', conversationId)
+    .order('created_at', { ascending: true });
+
+  if (error) throw error;
+  return data as ChatMessage[];
+}

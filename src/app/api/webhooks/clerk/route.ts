@@ -61,7 +61,7 @@ export async function POST(req: Request) {
           await supabase.from("credits").upsert(
             {
               user_id: id,
-              credits: 200,
+              credits: process.env.NEW_USER_SIGN_UP_TOKENS || 0,
             },
             {
               onConflict: "user_id",
