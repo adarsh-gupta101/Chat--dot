@@ -24,9 +24,9 @@ export function HeaderComponent() {
         </Link>
       </div>
       <nav className="hidden md:flex items-center gap-4 text-sm font-medium">
-        <Link href="/pricing" className="px-4 py-2 rounded-md hover:bg-muted hover:text-foreground" prefetch={false}>
+        {/* <Link href="/pricing" className="px-4 py-2 rounded-md hover:bg-muted hover:text-foreground" prefetch={false}>
           Pricing
-        </Link>
+        </Link> */}
         <Link href="/dashboard" className="px-4 py-2 rounded-md hover:bg-muted hover:text-foreground" prefetch={false}>
           Dashboard
         </Link>
