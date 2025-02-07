@@ -42,7 +42,7 @@ export default function HomeScreen() {
           >
             Unlock AI&apos;s Full Potential <br />
             <Highlight className="block text-black pd-1 md:p-2 mt-6 md:mt-4">
-              At 80% Less Cost
+              At ZERO Cost
             </Highlight>
           </motion.h1>
         </HeroHighlight>
@@ -54,8 +54,7 @@ export default function HomeScreen() {
           className="text-center text-gray-600 dark:text-gray-300 text-lg md:text-xl mt-6 md:mt-8 max-w-2xl mx-auto"
         >
           Access cutting-edge AI models without breaking the bank. Our platform
-          brings you the power of ChatGPT, Claude, and more at a fraction of the
-          cost.
+          brings you the power of ChatGPT, Claude, Gemini and more. 
         </motion.p>
 
         <motion.div
@@ -65,11 +64,11 @@ export default function HomeScreen() {
           className="flex flex-col sm:flex-row gap-4 justify-center mt-8 md:mt-12"
         >
           <Button className="px-6 py-3 text-lg bg-green-500 dark:bg-yellow-400 text-white dark:text-black hover:bg-green-600 dark:hover:bg-yellow-500 ring-2 ring-green-600 dark:ring-yellow-500">
-            <Link href="/pricing">Start Saving Now 🚀</Link>
+            <Link href="/dashboard">Get Started Now 🚀</Link>
           </Button>
-          <Button variant="outline" className="px-6 py-3 text-lg">
+          {/* <Button variant="outline" className="px-6 py-3 text-lg">
             <Link href="/dashboard">Try Now</Link>
-          </Button>
+          </Button> */}
         </motion.div>
       </div>
 

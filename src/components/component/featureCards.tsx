@@ -22,8 +22,8 @@ const features = [
     bgColor: "bg-purple-100",
   },
   {
-    title: "Save up to 80% on your AI expenses!",
-    description: "Get access to all AI models at a fraction of the cost.",
+    title: "Access top AI models for free—limited time!",
+    description: " Stay ahead with cutting-edge AI at unbeatable value.",
     icon: "💰",
     bgColor: "bg-red-100",
   },

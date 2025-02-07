@@ -7,7 +7,7 @@ function FooterComponent() {
     <footer className=" w-full flex md:flex-row flex-col justify-between items-center border-t-2 p-2 px-6">
       <div className="">
         <Image src="/logo.png" alt="logo" width={50} height={50} />
-        <p className="font-bold ">Chat-dot</p>
+        <p className="font-bold ">Inquira</p>
       </div>
 
       <div>
@@ -22,11 +22,18 @@ function FooterComponent() {
               Privacy Policy
             </li>
           </Link>
-          <Link href="/tos">
+          {/* <Link href="/tos">
             <li className="hover:text-gray-500 hover:underline m-1 p-1">
               Terms of Services
             </li>
+          </Link> */}
+          {/* link to twitter */}
+          <Link href="https://x.com/Inquirasolai">
+          <li className="hover:text-gray-500 hover:underline m-1 p-1">
+          Follow us on X
+          </li>
           </Link>
+
         </ul>
       </div>
     </footer>
