@@ -8,6 +8,13 @@ Inquira is an all-in-one AI application that seamlessly integrates multiple AI m
 - **Create UI on the Fly**: Dynamically generate user interfaces tailored to your needs, all within the app.
 - **AI-Generated Images**: Unleash your creativity by generating images powered by cutting-edge AI technology.
 
+## Tech Stack
+
+- Next.js
+- Shadcn/ui
+- Clerk
+- Supabase
+
 ## Installation
 
 Getting started with Inquira is simple. Follow these steps to set up the application on your local machine:
