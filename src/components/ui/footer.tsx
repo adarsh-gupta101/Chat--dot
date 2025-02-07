@@ -29,11 +29,16 @@ function FooterComponent() {
           </Link> */}
           {/* link to twitter */}
           <Link href="https://x.com/Inquirasolai">
-          <li className="hover:text-gray-500 hover:underline m-1 p-1">
+          <li className="hover:text-gray-500 hover:underline m-1 md:border-r-2 p-1">
           Follow us on X
-          </li>
+            </li>
           </Link>
 
+          <Link href="https://github.com/adarsh-gupta101/chat-with-all-ai/">
+            <li className="hover:text-gray-500 hover:underline m-1 p-1">
+              Github
+            </li>
+          </Link>
         </ul>
       </div>
     </footer>
