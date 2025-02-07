@@ -35,3 +35,5 @@ Experience Inquira live by visiting [chat.adarsh-gupta.in](https://chat.adarsh-g
 ---
 
 Inquira is designed to simplify your interaction with AI, providing a comprehensive solution for all your AI-driven needs. Dive in and discover the future of AI integration today!
+
+[Follow us of X](https://x.com/Inquirasolai?t=71XTq_DaoX_ClUZsZxNxAg&s=09)
