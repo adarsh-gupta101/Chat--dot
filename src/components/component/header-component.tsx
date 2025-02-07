@@ -20,7 +20,7 @@ export function HeaderComponent() {
       <div className="flex items-center gap-4">
         <Link href="/" className="flex items-center gap-2" prefetch={false}>
           <Image alt="logo" src={logo} width={60} height={60} className="w-10 h-10"/>
-          <span className="font-bold text-lg">chat-dot.com</span>
+          <span className="font-bold text-lg ">Inquira</span>
         </Link>
       </div>
       <nav className="hidden md:flex items-center gap-4 text-sm font-medium">

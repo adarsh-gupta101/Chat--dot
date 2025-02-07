@@ -18,7 +18,7 @@ const inter = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Chat-dot",
+  title: "Inquira",
   description: "Chat with All AI Apps under one roof",
   icons: {
     icon: "/logo.png",

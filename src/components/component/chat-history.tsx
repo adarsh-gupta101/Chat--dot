@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { formatDistanceToNow } from "date-fns";
+import { ChatHistoryModal } from "@/components/component/chat-history-model";
+
 
 type Conversation = {
   id: string;
@@ -15,6 +17,13 @@ type Conversation = {
 export function ChatHistory() {
   const { user } = useUser();
   const [conversations, setConversations] = useState<Conversation[]>([]);
+  const [selectedConversation, setSelectedConversation] = useState<Conversation | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleConversationClick = (conversation: Conversation) => {
+    setSelectedConversation(conversation);
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     async function fetchChatHistory() {
@@ -23,6 +32,7 @@ export function ChatHistory() {
         if (response.ok) {
           const data = await response.json();
           setConversations(data.chat_history);
+        //   console.log({ data });
         }
       } catch (error) {
         console.error("Failed to fetch chat history:", error);
@@ -44,6 +54,8 @@ export function ChatHistory() {
           <div
             key={conversation.id}
             className="border rounded-lg p-4 hover:bg-accent transition-colors"
+            onClick={() => handleConversationClick(conversation)}
+
           >
             <div className="flex justify-between items-start mb-2">
               <div className="space-y-1">
@@ -78,6 +90,15 @@ export function ChatHistory() {
           </div>
         ))
       )}
+
+<ChatHistoryModal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          setSelectedConversation(null);
+        }}
+        conversation={selectedConversation}
+      />
     </div>
   );
 }
