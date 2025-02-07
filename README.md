@@ -23,7 +23,7 @@ Getting started with Inquira is simple. Follow these steps to set up the applica
 
 ## Visit the Site
 
-Experience Chat Dot live by visiting [chat.adarsh-gupta.in](https://chat.adarsh-gupta.in).
+Experience Inquira live by visiting [chat.adarsh-gupta.in](https://chat.adarsh-gupta.in).
 
 ---
 
