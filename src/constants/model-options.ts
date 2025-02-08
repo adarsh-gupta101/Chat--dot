@@ -8,6 +8,6 @@ export const MODEL_OPTIONS = [
   "gpt-4o",
 //   "llama-3.1-70b",
 //   "llama-3.1-405b",
-  "gemini-1.5-flash",
-  "gemini-1.5-pro",
+  // "gemini-1.5-flash",
+  // "gemini-1.5-pro",
 ] as const;

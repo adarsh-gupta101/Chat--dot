@@ -62,13 +62,13 @@ export function SidebarComponent() {
         <IconBrandOpenai className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
-    {
-      label: "Google AI",
-      href: "/google",
-      icon: (
-        <IconBrandGoogleFilled className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
+    // {
+    //   label: "Google AI",
+    //   href: "/google",
+    //   icon: (
+    //     <IconBrandGoogleFilled className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+    //   ),
+    // },
     {
       label: "UI Generator",
       href: "/ui",
