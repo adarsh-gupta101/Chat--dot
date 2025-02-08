@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     }
 
     const { credits, success } = await getUserCredits(user.id);
-    if (!success || credits < 5000) {
+    if (!success || credits < 200) {
       return NextResponse.json(
         { error: "Insufficient credits" },
         { status: 402 }
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
       },
     });
 
-    await deductCredit(user.id, 5000); // Deduct 1000 credits for image generation
+    await deductCredit(user.id, 200); // Deduct 1000 credits for image generation
     try {
       await addUserGeneratedImages(
         (result as { images: { url: string }[] }).images[0].url,
