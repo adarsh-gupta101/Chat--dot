@@ -82,14 +82,14 @@ export function HeaderComponent() {
         </SheetTrigger>
         <SheetContent side="right" className="md:hidden">
           <nav className="grid gap-4 p-4">
-            <Link
+            {/* <Link
               href="/pricing"
               className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-muted hover:text-foreground"
               prefetch={false}
             >
               <DollarSignIcon className="w-4 h-4" />
               Pricing
-            </Link>
+            </Link> */}
             <Link
               href="/dashboard"
               className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-muted hover:text-foreground"
