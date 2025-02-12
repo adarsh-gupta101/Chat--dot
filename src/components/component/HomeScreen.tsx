@@ -81,7 +81,7 @@ export default function HomeScreen() {
       
       <div className="flex justify-center items-center my-8 md:my-8">
         {/* <video src="/video.mp4" autoPlay loop muted controls className="w-3/4 max-w-7xl rounded-lg shadow-lg" /> */}
-        <video
+        {/* <video
           autoPlay
           loop
           muted
@@ -90,7 +90,7 @@ export default function HomeScreen() {
         >
           <source src="/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
       </div>
 
       <FeatureCards/>
