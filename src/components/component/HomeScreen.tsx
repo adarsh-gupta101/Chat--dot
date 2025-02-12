@@ -90,7 +90,7 @@ export default function HomeScreen() {
           className="w-3/4 max-w-7xl rounded-lg shadow-lg"
         >
           <source src="/video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          Your browser does not support the video tags.
         </video>
       </div>
 
