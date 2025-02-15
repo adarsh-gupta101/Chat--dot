@@ -7,7 +7,7 @@ function FooterComponent() {
     <footer className=" w-full flex md:flex-row flex-col justify-between items-center border-t-2 p-2 px-6">
       <div className="">
         <Image src="/logo.png" alt="logo" width={50} height={50} />
-        <p className="font-bold ">Inquira</p>
+        <p className="font-bold ">Chat-dot</p>
       </div>
 
       <div>
@@ -28,7 +28,7 @@ function FooterComponent() {
             </li>
           </Link> */}
           {/* link to twitter */}
-          <Link href="https://x.com/Inquirasolai">
+          <Link href="https://x.com/adarsh____gupta">
           <li className="hover:text-gray-500 hover:underline m-1 md:border-r-2 p-1">
           Follow us on X
             </li>

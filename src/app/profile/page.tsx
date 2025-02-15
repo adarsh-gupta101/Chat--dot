@@ -36,11 +36,11 @@ function Page() {
       <HeaderComponent />
       <CreditComponent credits={credits}/>
 
-      {/* <h2 className="scroll-m-20  pb-2 text-3xl font-semibold tracking-tight first:mt-0 p-4 text-center mb-16">
+      <h2 className="scroll-m-20  pb-2 text-3xl font-semibold tracking-tight first:mt-0 p-4 text-center mb-16">
         Running out of credits? Buy More Credits ↓{" "}
       </h2>
 
-      <Pricing/> */}
+      <Pricing/>
        <section className="bg-card rounded-lg shadow min-h-[70vh]">
           <ChatHistory />
         </section>
