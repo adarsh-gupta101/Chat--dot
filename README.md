@@ -1,6 +1,6 @@
-# Inquira
+# Chat-dot
 
-Inquira is an all-in-one AI application that seamlessly integrates multiple AI models into a single, user-friendly platform. Whether you're looking to chat with advanced AI, generate dynamic UIs, or create stunning AI-generated images, Inquira has you covered.
+Chat-dot is an all-in-one AI application that seamlessly integrates multiple AI models into a single, user-friendly platform. Whether you're looking to chat with advanced AI, generate dynamic UIs, or create stunning AI-generated images, Inquira has you covered.
 
 ## Features
 
@@ -30,10 +30,8 @@ Getting started with Inquira is simple. Follow these steps to set up the applica
 
 ## Visit the Site
 
-Experience Inquira live by visiting [inquira.io](https://inquira.io).
+Experience Chat-dot live by visiting [Chat dot](https://chat.adarsh-gupta.in).
 
 ---
 
-Inquira is designed to simplify your interaction with AI, providing a comprehensive solution for all your AI-driven needs. Dive in and discover the future of AI integration today!
 
-[Follow us of X](https://x.com/Inquirasolai?t=71XTq_DaoX_ClUZsZxNxAg&s=09)
