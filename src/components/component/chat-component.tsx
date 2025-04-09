@@ -70,7 +70,7 @@ export function ChatComponent({
 
   const { user } = useUser();
 
-  console.log(user)
+  // console.log(user)
 
   // Handle syncing messages across all chat components
   useEffect(() => {
